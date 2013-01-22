@@ -11,7 +11,7 @@ This is the stylesheet structure & boilerplate that I seem to be repeating on ev
 ## Further reading
 
 Ideas borrowed from many places, including:
-- [Clean our your Sass junk drawer](http://gist.io/4436524) by Dale Sand
+- [Clean out your Sass junk drawer](http://gist.io/4436524) by Dale Sand
 - [IE-friendly mobile-first CSS with Sass 3.2](http://jakearchibald.github.com/sass-ie/) by Jake Archibald
 - [Organising SASS Assets in Rails](https://coderwall.com/p/bqxhxg) by Ben Taylor
 
