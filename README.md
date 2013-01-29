@@ -1,6 +1,6 @@
 # style
 
-This is the stylesheet structure & boilerplate that I seem to be repeating on every project lately. It scales.
+CSS architecture patterns that I've found myself using on every project lately. So far, these seem 
 
 - [Compass](http://compass-style.org/)
 - [SMACSS](http://smacss.com/) with [BEM](http://bem.info/method/)-inspired syntax for modifiers & subcomponents
@@ -14,6 +14,7 @@ This is the stylesheet structure & boilerplate that I seem to be repeating on ev
   // Root module rules
 
 .example-widget--modifier
+  @extend .example-widget
   // Rules to extend the root module to create a different
   // standalone module.
   // e.g. .example-widget--large
@@ -26,6 +27,10 @@ This is the stylesheet structure & boilerplate that I seem to be repeating on ev
 .example-widget--is-somestate
   // Module-specific state rules
 ```
+
+I'm undecided on the wisdom of `@extend`ing the root module instead of requiring both classes in the HTML as Snook recommends in SMACSS, eg `<a class="example-widget example-widget--modifier">`.
+
+It seems so much neater this way, but if you can see it biting me in the ass then let me know.
 
 ## Further reading
 
