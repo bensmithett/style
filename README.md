@@ -8,6 +8,25 @@ This is the stylesheet structure & boilerplate that I seem to be repeating on ev
 - [Normalize.css](http://necolas.github.com/normalize.css/)
 - Seperately rendered stylesheet for Old IE
 
+## Module syntax
+```sass
+.example-widget
+  // Root module rules
+
+.example-widget--modifier
+  // Rules to extend the root module to create a different
+  // standalone module.
+  // e.g. .example-widget--large
+
+.example-widget__subcomponent
+  // Rules for a subcomponent of an .example-widget module.
+  // It must be a child of the root module.
+  // e.g. .example-widget__close-button
+
+.example-widget--is-somestate
+  // Module-specific state rules
+```
+
 ## Further reading
 
 Ideas borrowed from many places, including:
