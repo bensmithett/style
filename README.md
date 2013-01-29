@@ -1,6 +1,6 @@
 # style
 
-CSS architecture patterns that I've found myself using on every project lately. So far, these seem 
+CSS architecture patterns that I've found myself using on every project lately. 
 
 - [Compass](http://compass-style.org/)
 - [SMACSS](http://smacss.com/) with [BEM](http://bem.info/method/)-inspired syntax for modifiers & subcomponents
