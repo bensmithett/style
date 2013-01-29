@@ -15,13 +15,15 @@ $desktop: 48em 12
 
 // Container
 .layout-page
+  min-height: 100%
+
   @include container($total-columns, $tablet, $desktop)
+  @include susy-grid-background
 
-// Layout (TODO: some actual layout styles http://susy.oddbird.net/demos/magic/)
-@include at-breakpoint($tablet)
-  body
-    background: green
+  @include at-breakpoint($tablet)
+    @include susy-grid-background
 
-@include at-breakpoint($desktop)
-  body
-    background: red
+  @include at-breakpoint($desktop)
+    $container-style: magic
+    @include container
+    @include susy-grid-background
