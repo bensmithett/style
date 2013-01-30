@@ -1,22 +1,20 @@
 # style
 
-CSS architecture patterns that I've found myself using on every project lately. 
+A starting point for scalable, maintainable CSS architecture.
 
 - [Compass](http://compass-style.org/)
 - [SMACSS](http://smacss.com/) with [BEM](http://bem.info/method/)-inspired syntax for modifiers & subcomponents
 - Mobile first responsive grid with [Susy](http://susy.oddbird.net/)
 - [Normalize.css](http://necolas.github.com/normalize.css/)
-- Seperately rendered stylesheet for Old IE
+- A standalone stylesheet for old IE generated from the same Sass.
 
 ## Getting started
-Assuming you have your own plans for Sass compilation, you'll probably just want to drop the `stylesheets` folder into your usual stylesheets path (note the dependencies in the `Gemfile` and Compass configuration in `config.rb`).
+Assuming you have your own plans for asset compilation, you'll probably just want to drop the `stylesheets` folder into your usual stylesheets path (note the dependencies in the `Gemfile` and Compass configuration in `config.rb`).
 
 That said, you can run this as a standalone Compass project if you wish.
 
 1. `bundle install`
 - `compass watch` or `compass compile` to compile CSS to `css/`
-
-See `index.html` for an example of how to include the `oldie.css`.
 
 ## Module syntax
 ```sass
@@ -41,6 +39,18 @@ See `index.html` for an example of how to include the `oldie.css`.
 I'm undecided on the wisdom of `@extend`ing the root module instead of requiring both classes in the HTML like Snook recommends in SMACSS, eg `<a class="example-widget example-widget--modifier">`.
 
 It seems so much neater this way, but if you can see it biting me in the ass then let me know.
+
+## Sigh... IE
+Keep IE specific declarations with the selector they belong to, but only output them in a seperate `oldie.css` that is included with conditional comments ([hat tip](http://jakearchibald.github.com/sass-ie/)).
+
+```sass
+p
+  color: #f00
+  
+  @if $oldie
+    position: relative
+    zoom: 1
+```
 
 ## Further reading
 
