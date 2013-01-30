@@ -17,7 +17,7 @@ That said, you can run this as a standalone Compass project if you wish.
 - `compass watch` or `compass compile` to compile CSS to `css/`
 
 ## Module syntax
-Here's what an example module, `/stylesheets/modules/example.sass`, might look like: 
+Here's what an example module, `/stylesheets/modules/example_widget.sass`, might look like: 
 ```sass
 @mixin example-mixin
   // A mixin to be used in this module
