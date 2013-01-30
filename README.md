@@ -18,22 +18,24 @@ That said, you can run this as a standalone Compass project if you wish.
 
 ## Module syntax
 ```sass
+@mixin example-mixin
+  // A mixin to be used in this module
+
 .example-widget
-  // Root module rules
+  // The module
 
 .example-widget--modifier
   @extend .example-widget
-  // Rules to extend the root module to create a different
+  // Extend the root module to create a different
   // standalone module.
   // e.g. .example-widget--large
 
 .example-widget__subcomponent
-  // Rules for a subcomponent of an .example-widget module.
-  // It must be a child of the root module.
+  // A subcomponent of an .example-widget module.
   // e.g. .example-widget__close-button
 
 .example-widget--is-somestate
-  // Module-specific state rules
+  // A state specific to this module.
 ```
 
 I'm undecided on the wisdom of `@extend`ing the root module instead of requiring both classes in the HTML like Snook recommends in SMACSS, eg `<a class="example-widget example-widget--modifier">`.
