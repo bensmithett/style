@@ -2,16 +2,19 @@
   // A mixin to be used in this module
 
 .example-widget
+  color: $green
   // Root module rules
 
-.example-widget--submodule
+.example-widget--modifier
   @extend .example-widget
   // Rules to extend the root module to create a different
   // standalone module.
+  // e.g. .example-widget--large
 
 .example-widget__subcomponent
-  // Rules for a subcomponent of a .example-widget module.
+  // Rules for a subcomponent of an .example-widget module.
   // It must be a child of the root module.
+  // e.g. .example-widget__close-button
 
 .example-widget--is-somestate
   // Module-specific state rules
