@@ -8,6 +8,16 @@ CSS architecture patterns that I've found myself using on every project lately.
 - [Normalize.css](http://necolas.github.com/normalize.css/)
 - Seperately rendered stylesheet for Old IE
 
+## Getting started
+Assuming you have your own plans for Sass compilation, you'll probably just want to drop the `stylesheets` folder into your usual stylesheets path (note the dependencies in the `Gemfile` and Compass configuration in `config.rb`).
+
+That said, you can run this as a standalone Compass project if you wish.
+
+1. `bundle install`
+- `compass watch` or `compass compile` to compile CSS to `css/`
+
+See `index.html` for an example of how to include the `oldie.css`.
+
 ## Module syntax
 ```sass
 .example-widget
