@@ -1,6 +1,6 @@
 # style
 
-A starting point for scalable, maintainable CSS architecture.
+A starting point for a scalable, maintainable CSS architecture.
 
 - [Compass](http://compass-style.org/)
 - [SMACSS](http://smacss.com/) with [BEM](http://bem.info/method/)-inspired syntax for modifiers & subcomponents
