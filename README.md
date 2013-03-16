@@ -38,7 +38,7 @@ Here's what an example module, `/stylesheets/modules/_example_widget.sass`, migh
   // Extends the root module to create a different
   // standalone module, e.g. .example-widget--large
   
-  // Only @extend within modules. @extend-ing across modules
+  // Only @extend within a module's own file. @extend-ing across modules
   // defeats the purpose of strictly isolating a module in its own file.
 
 .example-widget__subcomponent
