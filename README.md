@@ -2,7 +2,7 @@
 
 A starting point for a scalable, maintainable CSS architecture.
 
-- [Compass](http://compass-style.org/)
+- [Compass](http://compass-style.org/) with [vertical rhythm](http://compass-style.org/reference/compass/typography/vertical_rhythm/)
 - [SMACSS](http://smacss.com/) with [BEM](http://bem.info/method/)-inspired syntax for modifiers & subcomponents
 - Mobile first responsive grid with [Susy](http://susy.oddbird.net/)
 - [Normalize.css](http://necolas.github.com/normalize.css/)
@@ -17,19 +17,29 @@ That said, you can run this as a standalone Compass project if you wish.
 - `compass watch` or `compass compile` to compile CSS to `css/`
 
 ## Module syntax
-Here's what an example module, `/stylesheets/modules/example_widget.sass`, might look like: 
+Here's what an example module, `/stylesheets/modules/_example_widget.sass`, might look like: 
 ```sass
 @mixin example-mixin
   // A mixin to be used in this module
+  // If you have a mixin that will be reused in other modules, put it
+  // in _global_mixins.sass
 
 .example-widget
-  // The module
+  // A module definition
+
+  // If you have --modifier versions of this module (see below)
+  // consider extracting common bits out into a %placeholder
+  // class and @extend-ing.
 
 .example-widget--modifier
-  @extend .example-widget
-  // Extend the root module to create a different
-  // standalone module.
-  // e.g. .example-widget--large
+  @extend .example-widget   
+  // or @extend %example-widget
+
+  // Extends the root module to create a different
+  // standalone module, e.g. .example-widget--large
+  
+  // Only @extend within modules. @extend-ing across modules
+  // defeats the purpose of strictly isolating a module in its own file.
 
 .example-widget__subcomponent
   // A subcomponent of an .example-widget module.
@@ -37,13 +47,15 @@ Here's what an example module, `/stylesheets/modules/example_widget.sass`, might
 
 .example-widget--is-somestate
   // A state specific to this module.
+
+  // This class is applied on top of the module class (e.g. via JS)
+  // so doesn't need to @extend the original module.
+
+  // So the HTML looks like
+  // <b class="example-widget example-widget--is-somestate">
 ```
 
-I'm undecided on the wisdom of `@extend`ing the root module instead of requiring both classes in the HTML like Snook recommends in SMACSS, eg `<a class="example-widget example-widget--modifier">`.
-
-It seems so much neater this way, but if you can see it biting me in the ass then let me know.
-
-## Sigh... IE
+## IE-specific styles
 Keep IE specific declarations with the selector they belong to, but only output them in a seperate `oldie.css` that is included with conditional comments ([hat tip](http://jakearchibald.github.com/sass-ie/)).
 
 ```sass
@@ -54,6 +66,8 @@ p
     position: relative
     zoom: 1
 ```
+
+Theoretically this techinique isn't limited to IE - you could create all sorts of client-specific stylesheets as long as you have a way to conditionally load the right one.
 
 ## Further reading
 

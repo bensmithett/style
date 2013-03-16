@@ -1,8 +1,10 @@
+// The basics
 html
+  font-family: $sans-font-stack
   height: 100%
 
 body
-  background-color: $background-color
+  background-color: $white
   height: 100%
 
 a
@@ -10,3 +12,37 @@ a
 
   &:hover, &:focus
     color: darken($green, 20%)
+
+p
+  @include leader(0)
+  @include trailer(1)
+
+  &:last-child
+    @include trailer(0)
+
+// Lists
+ul, ol
+  @include leader(0)
+  @include trailer(1)
+  padding-left: rhythm(1.5)
+
+  li
+    @include trailer(1)
+
+    &:last-child
+      @include trailer(0)
+
+// Headings
+%heading
+  @include leader
+  @include trailer(1)
+
+h1, .h1
+  @extend %heading
+
+h2, .h2
+  @extend %heading
+
+h3, .h3
+  @extend %heading
+  
