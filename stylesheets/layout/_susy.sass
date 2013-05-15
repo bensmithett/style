@@ -3,15 +3,15 @@ $breakpoint-raw-output: $oldie
 
 // Mobile first fluid grid
 $total-columns: 4
-$column-width: 3.75em     // 60px / 16px
-$gutter-width: 1.25em     // 20px / 16px
-$grid-padding: 0.625em    // 10px / 16px
+$column-width: (60px / $base-font-size) + 0em
+$gutter-width: (20px / $base-font-size) + 0em
+$grid-padding: (10px / $base-font-size) + 0em
 $container-style: fluid
 @include border-box-sizing
 
 // Breakpoints
-$tablet: 30.063em 8
-$desktop: 48em 12
+$tablet: ((480px / $base-font-size) + 0em) 8
+$desktop: ((768px / $base-font-size) + 0em) 12
 
 // Container
 .layout-page
