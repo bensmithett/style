@@ -1,14 +1,44 @@
+// IE version variables
+// ------------------------------------------------
+// These are set to true in ie7.sass and ie8.sass
 $oldie: false !default
+$ie7: false !default
+$ie8: false !default
 
-// Vertical rhythm
+
+// Vertical rhythm settings
+// ------------------------------------------------
 $base-font-size: 16px
 $base-line-height: 24px
 $round-to-nearest-half-line: true
-@include establish-baseline
+
 
 // Colour palette
+// ------------------------------------------------
 $white: #fff
 $green: #20e320
 
+
 // Font stacks
+// ------------------------------------------------
 $sans-font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif
+
+
+// Susy settings
+// ------------------------------------------------
+// Mobile first fluid grid
+$total-columns: 4
+$column-width: (60px / $base-font-size) + 0em
+$gutter-width: (20px / $base-font-size) + 0em
+$grid-padding: (20px / $base-font-size) + 0em
+$container-style: fluid
+
+// Breakpoints
+$tablet:      ((569px / $base-font-size) + 0em) 8
+$tablet-only: ((569px / $base-font-size) + 0em) 8 ((1024px / $base-font-size) + 0em)
+$tablet-max:  8 ((1024px / $base-font-size) + 0em)
+$desktop:     ((1025px / $base-font-size) + 0em) 12
+
+// Remove media queries in IE stylesheets so they always get desktop styles
+// See http://susy.oddbird.net/guides/reference/#ref-raw-output
+$breakpoint-raw-output: $oldie

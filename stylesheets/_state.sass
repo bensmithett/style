@@ -1,2 +1,15 @@
+// Globally applicable state styles only!
+// Module-specific states belong with their module as a regular modifier class.
+// e.g .my-module--is-loading
+
 .is-hidden
-  display: none !important
+  display: none
+
+.no-js .is-hidden--no-js
+  display: none
+
+.js .is-hidden--js
+  display: none
+
+.is-visually-hidden
+  +visually-hidden

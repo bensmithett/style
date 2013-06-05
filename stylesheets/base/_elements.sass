@@ -1,3 +1,11 @@
+// Set baseline font size & line height
+// See http://compass-style.org/reference/compass/typography/vertical_rhythm/#mixin-establish-baseline
++establish-baseline
+
+// Set box-sizing: border-box and set the $border-box-sizing variable used internally by Susy
+// See http://susy.oddbird.net/guides/reference/#ref-border-box-mixin
++border-box-sizing
+
 // The basics
 html
   font-family: $sans-font-stack
@@ -14,35 +22,32 @@ a
     color: darken($green, 20%)
 
 p
-  @include leader(0)
-  @include trailer(1)
+  +leader(0)
+  +trailer(1)
 
   &:last-child
-    @include trailer(0)
+    +trailer(0)
 
 // Lists
 ul, ol
-  @include leader(0)
-  @include trailer(1)
+  +leader(0)
+  +trailer(1)
   padding-left: rhythm(1.5)
 
   li
-    @include trailer(1)
-
-    &:last-child
-      @include trailer(0)
-
-// Headings
-%heading
-  @include leader(0)
-  @include trailer(1)
+    +trailer(0)
 
 h1, .h1
-  @extend %heading
+  +adjust-font-size-to(32px)
+  +leader(0)
+  +trailer(1, 32px)
 
 h2, .h2
-  @extend %heading
+  +adjust-font-size-to(24px)
+  +leader(0)
+  +trailer(1, 24px)
 
 h3, .h3
-  @extend %heading
-  
+  +adjust-font-size-to(19px)
+  +leader(0)
+  +trailer(1, 19px)

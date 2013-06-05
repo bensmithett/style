@@ -3,17 +3,24 @@
   <head>
     <title>OldIE Stylesheet Example</title>
 
-    <!--[if (gt IE 8) | (IEMobile)]><!-->
-    <link rel="stylesheet" href="css/application.css" />
+    <!--[if gt IE 8]><!-->
+      <link rel="stylesheet" href="css/application.css" />
     <!--<![endif]-->
 
-    <!--[if (lt IE 9) & (!IEMobile)]>
-    <link rel="stylesheet" href="css/oldie.css" />
+    <!--[if IE 8]>
+      <link rel="stylesheet" href="css/ie8.css" />
+    <![endif]-->
+
+    <!--[if IE 7]>
+      <link rel="stylesheet" href="css/ie7.css" />
     <![endif]-->
   </head>
-  <body>
-    <div class="layout-page">
 
+  <body>
+    <div id="full-width-container" style="background-color: beige;">
+      <div class="grid" style="height: 500px;">
+        o hai
+      </div>
     </div>
   </body>
 </html>

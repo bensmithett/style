@@ -1,0 +1,24 @@
+// This module is a top-level Susy grid container.
+//
+// You can use Susy methods like span-columns() and at-breakpoint() in modules that
+// are placed inside this container. 
+//
+// You'll eventually want to delete the +susy-grid-background lines.
+//
+// http://susy.oddbird.net/guides/reference/
+
+.grid
+  +container
+  +susy-grid-background
+
+  +at-breakpoint($tablet)
+    +container
+    +susy-grid-background
+
+  +at-breakpoint($desktop)
+    @if $oldie
+      $container-style: static  // Sets explicit static width for OldIE. They get horizontal scrollbars at <1024px.
+    @else
+      $container-style: magic   // Sets a max-width so our grid is fluid up until 1024px, then static.
+    +container
+    +susy-grid-background
