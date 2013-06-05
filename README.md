@@ -3,10 +3,10 @@
 A starting point for a scalable, maintainable CSS architecture.
 
 - [Compass](http://compass-style.org/) with [vertical rhythm](http://compass-style.org/reference/compass/typography/vertical_rhythm/)
-- [SMACSS](http://smacss.com/) with [BEM](http://bem.info/method/)-inspired syntax for modifiers & subcomponents
-- Mobile first responsive grid with [Susy](http://susy.oddbird.net/)
+- [SMACSS](http://smacss.com/) modules with [BEM](http://bem.info/method/) syntax for modifiers & subcomponents
+- A [Susy](http://susy.oddbird.net/) mobile-first responsive grid module
 - [Normalize.css](http://necolas.github.com/normalize.css/)
-- A standalone stylesheet for old IE generated from the same Sass.
+- Standalone IE7 & IE8 stylesheets
 
 ## Getting started
 Assuming you have your own plans for asset compilation, you'll probably just want to drop the `stylesheets` folder into your usual stylesheets path (note the dependencies in the `Gemfile` and Compass configuration in `config.rb`).
@@ -16,58 +16,94 @@ That said, you can run this as a standalone Compass project if you wish.
 1. `bundle install`
 - `compass watch` or `compass compile` to compile CSS to `css/`
 
-## Module syntax
-Here's what an example module, `/stylesheets/modules/_example_widget.sass`, might look like: 
+## Modules
+With the exception of [base element styles](https://github.com/bensmithett/style/tree/master/stylesheets/base) & [global state classes](https://github.com/bensmithett/style/blob/master/stylesheets/_state.sass), **everything is a standalone, reusable module**.
+
+Even the things SMACSS calls [layout rules](http://smacss.com/book/type-layout), grid classes, and "unique" things like your site header.
+
+### Simple module
+
+Here's what a simple module, `/stylesheets/modules/_simple_widget.sass`, might look like:
 ```sass
-@mixin example-mixin
-  // A mixin to be used in this module
-  // If you have a mixin that will be reused in other modules, put it
-  // in _global_mixins.sass
+.simple-widget
+  color: goldenrod
+```
 
-.example-widget
-  // A module definition
+### Complex module
 
-  // If you have --modifier versions of this module (see below)
-  // consider extracting common bits out into a %placeholder
-  // class and @extend-ing.
+Here's a slightly more complex module, `/stylesheets/modules/_fancy_widget.sass`:
+```sass
+// .fancy-widget and .fancy-widget--partytime share most of their properties,
+// so we'll just extend this placeholder class.
+%fancy-widget-common
+  border: 2px solid steelblue
+  padding: 10px
 
-.example-widget--modifier
-  @extend .example-widget   
-  // or @extend %example-widget
 
-  // Extends the root module to create a different
-  // standalone module, e.g. .example-widget--large
+// The canonical fancy-widget class
+.fancy-widget
+  @extend %fancy-widget-common
+  color: goldenrod
+
+
+// A slightly modified fancy-widget.
+.fancy-widget--partytime
+  @extend %fancy-widget-common
+  color: fuchsia
+
+
+// Module-specific states are just modifiers too! 
+// The "is" keyword tells us that this is a state.
+.fancy-widget--is-loading
+  background: url(spinner.gif)
   
-  // Only @extend within a module's own file. @extend-ing across modules
-  // defeats the purpose of strictly isolating a module in its own file.
+  // It's up to you whether you add a state class on top of the module class:
+  // <b class="fancy-widget fancy-widget--is-loading">
+  // or @extend the original so you can replace it:
+  // <b class="fancy-widget--is-loading">
 
-.example-widget__subcomponent
-  // A subcomponent of an .example-widget module.
-  // e.g. .example-widget__close-button
 
-.example-widget--is-somestate
-  // A state specific to this module.
+// Sometimes it's easier to update a single state attribute with JS instead of
+// faffing about with adding & removing state classes from an element's classList.
+.fancy-widget[data-state=is-loading]
+  background: url(spinner.gif)
 
-  // This class is applied on top of the module class (e.g. via JS)
-  // so doesn't need to @extend the original module.
 
-  // So the HTML looks like
-  // <b class="example-widget example-widget--is-somestate">
+// A subcomponent (some component that must be a child of .fancy-widget)
+// Generally subcomponent classes exist purely to position an element inside the module.
+// Whatever is inside a subcomponent can usually be extracted out into its own module.
+.fancy-widget__close-button
+  margin-left: 20px
 ```
 
 ## IE-specific styles
-Keep IE specific declarations with the selector they belong to, but only output them in a seperate `oldie.css` that is included with conditional comments ([hat tip](http://jakearchibald.github.com/sass-ie/)).
-
+Keep IE-specific declarations with the selector they belong to, but only output them in a seperate `ie7.css` or `ie8.css` that is included with conditional comments ([hat tip](http://jakearchibald.github.com/sass-ie/)).
 ```sass
-p
-  color: #f00
+.my-module
+  color: olive
   
   @if $oldie
     position: relative
+    
+  @if $ie7
     zoom: 1
+  
+  @if $ie8
+    color: lime    
 ```
 
-Theoretically this techinique isn't limited to IE - you could create all sorts of client-specific stylesheets as long as you have a way to conditionally load the right one.
+## Media queries
+Just like IE-specific styles, media query-specific styles also appear right inside their module via Susy's [`at-breakpoint`](http://susy.oddbird.net/guides/reference/#ref-at-breakpoint) mixin.
+```sass
+.my-module
+  color: floralwhite
+  
+  +at-breakpoint($tablet)
+    color: plum
+  
+  +at-breakpoint($desktop)
+    color: burlywood
+```
 
 ## Further reading
 
