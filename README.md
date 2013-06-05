@@ -17,9 +17,9 @@ That said, you can run this as a standalone Compass project if you wish.
 - `compass watch` or `compass compile` to compile CSS to `css/`
 
 ## Modules
-With the exception of [base element styles](https://github.com/bensmithett/style/tree/master/stylesheets/base) & [global state classes](https://github.com/bensmithett/style/blob/master/stylesheets/_state.sass), **everything is a standalone, reusable module**.
+With the exception of [base element styles](https://github.com/bensmithett/style/tree/master/stylesheets/base) & [global state classes](https://github.com/bensmithett/style/blob/master/stylesheets/_state.sass), everything is a standalone, reusable module.
 
-Even the things SMACSS calls [layout rules](http://smacss.com/book/type-layout), grid classes, and "unique" things like your site header.
+Grid classes and "unique" things like your site header & footer aren't special. IDs aren't welcome.
 
 ### Simple module
 
