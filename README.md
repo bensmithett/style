@@ -33,41 +33,31 @@ Here's what a simple module, `/stylesheets/modules/_simple_widget.sass`, might l
 
 Here's a slightly more complex module, `/stylesheets/modules/_fancy_widget.sass`:
 ```sass
-// .fancy-widget and .fancy-widget--partytime share most of their properties,
-// so we'll just extend this placeholder class.
-%fancy-widget-common
-  border: 2px solid steelblue
-  padding: 10px
-
-
 // The canonical fancy-widget class
 .fancy-widget
-  @extend %fancy-widget-common
-  color: goldenrod
-
-
-// A slightly modified fancy-widget.
-.fancy-widget--partytime
-  @extend %fancy-widget-common
   color: fuchsia
 
+// A modified fancy-widget
+.fancy-widget--important
+  @extend .fancy-widget
+  font-weight: bold
 
-// Module-specific states are just modifiers too! 
-// The "is" keyword tells us that this is a state.
+// Hey look, module-specific states are just modifiers too! 
+// The "is" keyword indicates that this is a state class.
 .fancy-widget--is-loading
   background: url(spinner.gif)
   
-  // It's up to you whether you add a state class on top of the module class:
+  // It's up to you whether you add a state class on top of the module class...
   // <b class="fancy-widget fancy-widget--is-loading">
-  // or @extend the original so you can replace it:
+  // or @extend the original so you can replace it...
   // <b class="fancy-widget--is-loading">
+  //
+  // I usually end up with a combination of both.
 
-
-// Sometimes it's easier to update a single state attribute with JS instead of
-// faffing about with adding & removing state classes from an element's classList.
+// Sometimes it's easier to update a  single state attribute with JS instead of
+// faffing about with adding & removing state classes. That's ok.
 .fancy-widget[data-state=is-loading]
   background: url(spinner.gif)
-
 
 // A subcomponent (some component that must be a child of .fancy-widget)
 // Generally subcomponent classes exist purely to position an element inside the module.
