@@ -8,6 +8,9 @@ A starting point for a scalable, maintainable CSS architecture.
 - [Normalize.css](http://necolas.github.com/normalize.css/)
 - Standalone IE7 & IE8 stylesheets
 
+<blockquote>"But I hate Compass! Grrrr!"</blockquote>
+Settle petal. Just replace replace Compass & Susy with [Bourbon](http://bourbon.io/) & [Neat](http://neat.bourbon.io/) or your own alternatives and you'll be fine.
+
 ## Getting started
 Assuming you have your own plans for asset compilation, you'll probably just want to drop the `stylesheets` folder into your usual stylesheets path (note the dependencies in the `Gemfile` and Compass configuration in `config.rb`).
 
