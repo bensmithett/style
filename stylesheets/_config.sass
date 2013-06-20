@@ -1,11 +1,13 @@
 // IE version variables
 // ------------------------------------------------
-// These are set to true in ie7.sass and ie8.sass
-$oldie: false !default
 $ie7: false !default
 $ie8: false !default
+$ie9: false !default
+$lt-ie9: $ie7 or $ie8
 
-// Include OldIE hacks in Compass mixin output
+// Compass cross-browser support configuration
+// http://compass-style.org/reference/compass/support/
+$legacy-support-for-ie6: false
 $legacy-support-for-ie7: $ie7
 $legacy-support-for-ie8: $ie8
 
@@ -41,8 +43,9 @@ $container-style: fluid
 $tablet:      ((569px / $base-font-size) + 0em) 8
 $tablet-only: ((569px / $base-font-size) + 0em) 8 ((1024px / $base-font-size) + 0em)
 $tablet-max:  8 ((1024px / $base-font-size) + 0em)
-$desktop:     ((1025px / $base-font-size) + 0em) 12
+$desktop:     ((1025px / $base-font-size) + 0em) 12 lt-ie9
 
-// Remove media queries in IE stylesheets so they always get desktop styles
-// See http://susy.oddbird.net/guides/reference/#ref-raw-output
-$breakpoint-raw-output: $oldie
+// In IE7 & 8 all at-breakpoint blocks except $desktop are omitted.
+// $desktop at-breakpoint blocks are scoped to a .lt-ie9 class instead of the desktop media query.
+$breakpoint-media-output: not $lt-ie9
+$breakpoint-ie-output: $lt-ie9

@@ -16,8 +16,8 @@
     +susy-grid-background
 
   +at-breakpoint($desktop)
-    @if $oldie
-      $container-style: static  // Sets explicit static width for OldIE. They get horizontal scrollbars at <1024px.
+    @if $lt-ie9
+      $container-style: static  // Sets explicit static width for old IE. They get horizontal scrollbars at <1024px.
     @else
       $container-style: magic   // Sets a max-width so our grid is fluid up until 1024px, then static.
     +container

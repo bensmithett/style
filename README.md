@@ -6,7 +6,7 @@ A starting point for a scalable, maintainable CSS architecture.
 - [SMACSS](http://smacss.com/) modules with [BEM](http://bem.info/method/) syntax for modifiers & subcomponents
 - A [Susy](http://susy.oddbird.net/) mobile-first responsive grid module
 - [Normalize.css](http://necolas.github.com/normalize.css/)
-- Standalone IE7 & IE8 stylesheets
+- Standalone IE7, 8 & 9 stylesheets
 
 <blockquote>"But I hate Compass! Grrrr!"</blockquote>
 Settle petal. Just replace replace Compass & Susy with [Bourbon](http://bourbon.io/) & [Neat](http://neat.bourbon.io/) or your own alternatives and you'll be fine.
@@ -69,24 +69,8 @@ Here's a slightly more complex module, `/stylesheets/modules/_fancy_widget.sass`
   margin-left: 20px
 ```
 
-## IE-specific styles
-Keep IE-specific declarations with the selector they belong to, but only output them in a seperate `ie7.css` or `ie8.css` that is included with conditional comments ([hat tip](http://jakearchibald.github.com/sass-ie/)).
-```sass
-.my-module
-  color: olive
-  
-  @if $oldie
-    position: relative
-    
-  @if $ie7
-    zoom: 1
-  
-  @if $ie8
-    color: lime    
-```
-
 ## Media queries
-Just like IE-specific styles, media query-specific styles also appear right inside their module via Susy's [`at-breakpoint`](http://susy.oddbird.net/guides/reference/#ref-at-breakpoint) mixin.
+Breakpoint-specific styles are kept right inside their module via Susy's [`at-breakpoint`](http://susy.oddbird.net/guides/reference/#ref-at-breakpoint) mixin.
 ```sass
 .my-module
   color: floralwhite
@@ -97,6 +81,28 @@ Just like IE-specific styles, media query-specific styles also appear right insi
   +at-breakpoint($desktop)
     color: burlywood
 ```
+
+## Internet Explorer
+Like breakpoint-specific styles, IE-specific styles are kept with the selector they belong to, but are only output in a seperate `application-ie7.css` (or 8, or 9) stylesheet that is included with conditional comments ([hat tip](http://jakearchibald.github.com/sass-ie/)).
+
+```sass
+.my-module
+  color: olive
+  
+  @if $lt-ie9
+    position: relative
+    
+  @if $ie7
+    zoom: 1
+  
+  @if $ie8
+    color: lime  
+
+  @if $ie9
+    color: cadetblue
+```
+
+All `at-breakpoint` blocks except `$desktop` are ignored in IE7 & 8. In those browsers, `at-breakpoint($desktop)` blocks are scoped to a `.lt-ie9` class instead of the desktop media query.
 
 ## Further reading
 
