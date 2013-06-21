@@ -2,6 +2,8 @@
 
 A starting point for a scalable, maintainable CSS architecture.
 
+It's more philosophy than framework, but this implementation has:
+
 - [Compass](http://compass-style.org/) with [vertical rhythm](http://compass-style.org/reference/compass/typography/vertical_rhythm/)
 - [SMACSS](http://smacss.com/) modules with [BEM](http://bem.info/method/) syntax for modifiers & subcomponents
 - A [Susy](http://susy.oddbird.net/) mobile-first responsive grid module
