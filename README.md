@@ -102,7 +102,7 @@ Like breakpoint-specific styles, IE-specific styles are kept with the selector t
     color: cadetblue
 ```
 
-All `at-breakpoint` blocks except `$desktop` and `$tablet` are ignored in IE7 & 8, and `at-breakpoint($desktop)` & `at-breakpoint($tablet)` blocks are scoped to a `.lt-ie9` class instead of being scoped to media queries.
+In IE7 and 8, `at-breakpoint($tablet)` & `at-breakpoint($desktop)` are scoped to a `.lt-ie9` class instead of being scoped to media queries. All other breakpoints (eg `$tablet-max`) are discarded.
 
 ## Further reading
 
