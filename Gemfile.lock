@@ -13,7 +13,7 @@ GEM
     sass (3.3.0.alpha.69)
     sass-globbing (1.0.0)
       sass (>= 3.1)
-    susy (1.0.5)
+    susy (1.0.9)
       compass (>= 0.12.2)
       sass (>= 3.2.0)
 
@@ -24,4 +24,4 @@ DEPENDENCIES
   animation (~> 0.1.alpha.3)
   compass (~> 0.12.2)
   sass-globbing (~> 1.0.0)
-  susy (~> 1.0.5)
+  susy (~> 1.0.9)
