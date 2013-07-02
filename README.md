@@ -2,8 +2,6 @@
 
 A starting point for a scalable, maintainable CSS architecture.
 
-It's more philosophy than framework, but this implementation has:
-
 - [Compass](http://compass-style.org/) with [vertical rhythm](http://compass-style.org/reference/compass/typography/vertical_rhythm/)
 - [SMACSS](http://smacss.com/) modules with [BEM](http://bem.info/method/) syntax for modifiers & subcomponents
 - A [Susy](http://susy.oddbird.net/) mobile-first responsive grid module
@@ -12,6 +10,8 @@ It's more philosophy than framework, but this implementation has:
 
 <blockquote>"But I hate Compass! Grrrr!"</blockquote>
 Settle petal. Just replace replace Compass & Susy with [Bourbon](http://bourbon.io/) & [Neat](http://neat.bourbon.io/) or your own alternatives and you'll be fine.
+
+I wrote a [blog post](http://webuild.envato.com/blog/how-to-scale-and-maintain-legacy-css-with-sass-and-smacss/) explaining how we use this approach on the Envato marketplaces.
 
 ## Getting started
 Assuming you have your own plans for asset compilation, you'll probably just want to drop the `stylesheets` folder into your usual stylesheets path (note the dependencies in the `Gemfile` and Compass configuration in `config.rb`).
