@@ -1,30 +1,42 @@
 @charset "utf-8"
 
-// Vendor mixin libraries
+// Mixin & function libraries
+// ------------------------------------------------
+// Vendor
 @import compass
 @import susy
 
-// Vendor CSS libraries (i.e. they actually output styles)
-@import vendor/normalize
-
-// Your functions
+// Yours
 @import functions/**/*
-
-// Your mixins (if you have any)
 // @import mixins/**/*
 
+
 // Global config variables, colour palette, etc
+// ------------------------------------------------
 @import config
+
+
+// Vendor CSS libraries (i.e. they actually output styles)
+// ------------------------------------------------
+@import vendor/normalize
+
 
 // @font-face declarations
 // If you're using a JS webfont loader you won't need this
+// ------------------------------------------------
 @import fonts
 
+
 // Base element styles
+// ------------------------------------------------
 @import base/**/*
 
+
 // Modules
+// ------------------------------------------------
 @import modules/**/*
 
+
 // Global state classes
+// ------------------------------------------------
 @import state
