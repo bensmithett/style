@@ -1,0 +1,17 @@
+.example-module-b
+  +pre(1)
+  +span-columns(2)
+  +post(1)
+  background-color: rgba(255, 0, 0, 0.5)
+
+  +at-breakpoint($tablet)
+    +pre(1, $tablet-total-columns)
+    +span-columns(6, $tablet-total-columns)
+    +post(1, $tablet-total-columns)
+    background-color: rgba(0, 255, 0, 0.5)
+
+  +at-breakpoint($desktop)
+    +pre(2, $desktop-total-columns)
+    +span-columns(8, $desktop-total-columns)
+    +post(2, $desktop-total-columns)
+    background-color: rgba(0, 0, 255, 0.5)
