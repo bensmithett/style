@@ -1,5 +1,4 @@
 # Require any additional compass plugins here.
-require "animation"
 require "sass-globbing"
 require "susy"
 
