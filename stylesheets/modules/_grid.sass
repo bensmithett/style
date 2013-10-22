@@ -11,14 +11,16 @@
   +container
   +susy-grid-background
 
-  +at-breakpoint($tablet)
-    +with-grid-settings($tablet-total-columns, $tablet-column-width, $tablet-gutter-width, $tablet-grid-padding)
-      +container
-      +susy-grid-background
+  +at-breakpoint($tablet-and-above)
+    +container
+    +susy-grid-background
 
-  +at-breakpoint($desktop)
-    +with-grid-settings($desktop-total-columns, $desktop-column-width, $desktop-gutter-width, $desktop-grid-padding)
-      +container
-      +susy-grid-background
-      @if $lt-ie9
-        width: pxtoem(1024px, $base-font-size) // Force static width for IE7+8
+  +at-breakpoint($desktop-and-above)
+    +container
+    +susy-grid-background
+    @if $lt-ie9
+      // Force static width for IE7+8
+      width: pxtoem(1024px)
+    @else
+      // Constrain the fluid grid to a max width
+      max-width: pxtoem(1024px) 

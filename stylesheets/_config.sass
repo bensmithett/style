@@ -1,15 +1,14 @@
-// IE version variables
+// Responsive
 // ------------------------------------------------
-$ie7: false !default
-$ie8: false !default
-$ie9: false !default
-$lt-ie9: $ie7 or $ie8
+$responsive: true !default
 
-// Compass cross-browser support configuration
-// http://compass-style.org/reference/compass/support/
+
+// Cross browser support settings
+// ------------------------------------------------
+$lt-ie9: false !default
 $legacy-support-for-ie6: false
-$legacy-support-for-ie7: $ie7
-$legacy-support-for-ie8: $ie8
+$legacy-support-for-ie7: $lt-ie9
+$legacy-support-for-ie8: $lt-ie9
 
 
 // Vertical rhythm settings
@@ -27,43 +26,27 @@ $green: #20e320
 
 // Font stacks
 // ------------------------------------------------
-$sans-font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif
+$helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif
 
 
-// Susy: grid container settings
-// ------------------------------------------------
-$container-style: magic
-
-// Mobile first default grid settings
-// http://gridcalculator.dk/#/568/4/20/10
+// Susy
+// ------------------------
+// Grid settings
+$container-style: fluid
 $total-columns: 4
-$column-width: pxtoem(122px, $base-font-size)
-$gutter-width: pxtoem(20px, $base-font-size)
-$grid-padding: pxtoem(10px, $base-font-size)
+$column-width: pxtoem(65px)
+$gutter-width: pxtoem(20px)
+$grid-padding: pxtoem(10px)
 
-// Tablet grid settings
-// http://gridcalculator.dk/#/1024/8/20/10
-$tablet-total-columns: 8
-$tablet-column-width: pxtoem(108px, $base-font-size)
-$tablet-gutter-width: pxtoem(20px, $base-font-size)
-$tablet-grid-padding: pxtoem(10px, $base-font-size)
-
-// Desktop grid settings
-// http://gridcalculator.dk/#/1024/12/16/10
-$desktop-total-columns: 12
-$desktop-column-width: pxtoem(69px, $base-font-size)
-$desktop-gutter-width: pxtoem(16px, $base-font-size)
-$desktop-grid-padding: pxtoem(10px, $base-font-size)
-
-
-// Susy: responsive breakpoint settings
-// ------------------------------------------------
 // Breakpoints
-$tablet:      pxtoem(569px, $base-font-size) lt-ie9
-$tablet-only: pxtoem(569px, $base-font-size) 8 pxtoem(1024px, $base-font-size)
-$tablet-max:  8 pxtoem(1024px, $base-font-size)
-$desktop:     pxtoem(1025px, $base-font-size) lt-ie9
+$phone-only: 4 pxtoem(568px)
+$tablet-and-above: pxtoem(569px) 8 fixed-layout
+$tablet-only: pxtoem(569px) 8 pxtoem(1024px)
+$tablet-and-below: 8 pxtoem(1024px)
+$desktop-and-above: pxtoem(1025px) 12 fixed-layout
 
-// In IE7 & 8 at-breakpoint() blocks are scoped to a .lt-ie9 class instead of desktop or tablet media queries.
-$breakpoint-media-output: not $lt-ie9
-$breakpoint-ie-output: $lt-ie9
+// Where `at-breakpoint` is used with one of the `fixed-layout` breakpoints above,
+// the block will be scoped to a `fixed-layout` class instead of being scoped to 
+// media queries.
+$breakpoint-media-output: $responsive and not $lt-ie9
+$breakpoint-ie-output: $lt-ie9 or not $responsive
