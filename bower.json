@@ -1,0 +1,6 @@
+{
+  "name": "Your App Name Here",
+  "dependencies": {
+    "normalize-css": "~2.1.3"
+  }
+}
