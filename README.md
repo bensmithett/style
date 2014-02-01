@@ -2,7 +2,7 @@
 
 A starting point for a scalable, maintainable CSS architecture.
 
-- [Compass](http://compass-style.org/) with [vertical rhythm](http://compass-style.org/reference/compass/typography/vertical_rhythm/)
+- [Compass](http://compass-style.org/) (for compilation & Susy only - no Compass mixins used)
 - [SMACSS](http://smacss.com/) modules with [BEM](http://bem.info/method/) syntax for modifiers & subcomponents
 - A [Susy](http://susy.oddbird.net/) mobile-first responsive grid module
 - [Normalize.css](http://necolas.github.com/normalize.css/)
