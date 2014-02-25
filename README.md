@@ -34,11 +34,25 @@ Install local dependencies:
 - Run `gulp` or `gulp watch` to compile CSS into `css/`
 
 ## Modules
-With the exception of [base element styles](https://github.com/bensmithett/style/tree/master/stylesheets/base) & [global state classes](https://github.com/bensmithett/style/blob/master/stylesheets/_state.sass), everything is a module. Modules are standalone, reusable components that have no knowledge of their parent container. Their only dependencies are the app’s base styles.
+
+Modules are the core of Style's architecture. A module:
+
+- Is defined in its own file (eg `modules/_my_module.sass`)
+- Is isolated, reusable & disposable.
+- Has no knowledge of its context (i.e. doesn't depend on styles from a particular parent element - it can be rendered anywhere)
+- Minimises its own [depth of applicability](http://smacss.com/book/applicability) so that it can safely contain other modules
+- Specifies no context-specific dimensions. It either 100% fills whatever parent container it is rendered in, or is an inline/inline-block element.
+
+If this kind of CSS doesn't sound familiar, you may want to read these to get a bit of background:
+
+- [SMACSS](http://smacss.com/book/categorizing)
+- [How to scale and maintain legacy CSS with Sass and SMACSS](http://webuild.envato.com/blog/how-to-scale-and-maintain-legacy-css-with-sass-and-smacss/)
+- [Objects in Space](https://medium.com/objects-in-space/f6f404727)
 
 ### Simple module
 
 Here's what a simple module, `/stylesheets/modules/_simple_widget.sass`, might look like:
+
 ```sass
 .simple-widget
   color: goldenrod
@@ -52,33 +66,24 @@ Here's a slightly more complex module, `/stylesheets/modules/_fancy_widget.sass`
 .fancy-widget
   color: fuchsia
 
+  // State is applied with a second class...
+  &.is-loading
+    background: url(spinner.gif)
+
+  // ...or with a data attribute
+  &[data-state=loading]
+    background: url(spinner.gif)
+
 // A modified fancy-widget
 .fancy-widget--important
   @extend .fancy-widget
   font-weight: bold
 
-// Hey look, module-specific states are just modifiers too! 
-// The "is" keyword indicates that this is a state class.
-.fancy-widget--is-loading
-  background: url(spinner.gif)
-  
-  // It's up to you whether you add modifier classes on top of the module class...
-  // <b class="fancy-widget fancy-widget--is-loading">
-  // or @extend the original so you can replace it...
-  // <b class="fancy-widget--is-loading">
-  //
-  // I still haven't decided which approach I like better.
-
-// Sometimes it's easier to update a  single state attribute with JS instead of
-// faffing about with adding & removing state classes. That's ok.
-.fancy-widget[data-state=is-loading]
-  background: url(spinner.gif)
-
-// A subcomponent (some component that must be a child of .fancy-widget)
-// Generally subcomponent classes exist purely to position an element inside the module.
-// Whatever is inside a subcomponent can usually be extracted out into its own module.
+// A submodule (some module that *must* be a child of .fancy-widget)
+// Whatever is inside a submodule can usually be extracted out into its own module.
 .fancy-widget__close-button
   margin-left: 20px
+  width: 100px
 ```
 
 ## Media queries
