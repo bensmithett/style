@@ -2,23 +2,36 @@
 
 A starting point for a scalable, maintainable CSS architecture.
 
-- [Compass](http://compass-style.org/) (for compilation & Susy only - no Compass mixins used)
-- [SMACSS](http://smacss.com/) modules with [BEM](http://bem.info/method/) syntax for modifiers & subcomponents
+- [SMACSS](http://smacss.com/)-style modules with [BEM](http://bem.info/method/) syntax
+- [autoprefixer](https://github.com/ai/autoprefixer) for vendor prefixes
 - A [Susy](http://susy.oddbird.net/) mobile-first responsive grid module
 - [Normalize.css](http://necolas.github.com/normalize.css/)
-- Standalone stylesheet for IE < 9
+- [Compass](http://compass-style.org/) (for compilation & Susy only - no Compass mixins used)
 
 You might choose to replace Compass & Susy with [Bourbon](http://bourbon.io/) & [Neat](http://neat.bourbon.io/) or your own alternatives.
 
 I wrote a [blog post](http://webuild.envato.com/blog/how-to-scale-and-maintain-legacy-css-with-sass-and-smacss/) explaining how we use this approach on the Envato [marketplaces](http://themeforest.net).
 
 ## Getting started
-Assuming you have your own plans for asset compilation, you'll probably just want to drop the `stylesheets` folder into your usual stylesheets path (note the dependencies in the `Gemfile` and Compass configuration in `config.rb`).
 
-That said, you can run this as a standalone Compass project if you wish.
+Style is designed as a starting point to work with your own asset compilation process (eg an [asset pipeline](http://guides.rubyonrails.org/asset_pipeline.html) or a [grunt](http://gruntjs.com/) or [gulp](http://gulpjs.com/) task).
 
-1. `bundle install`
-- `compass watch` or `compass compile` to compile CSS to `css/`
+You'll probably just want to drop the `stylesheets` folder into your usual stylesheets path (note the dependencies in the `Gemfile` and Compass configuration in `config.rb`).
+
+That said, you can run this as a standalone project if you wish.
+
+### Standalone compilation
+
+Requires ruby, node.js and
+
+- [bundler](http://bundler.io/): `gem install bundler`
+- [gulp](http://gulpjs.com/): `npm install -g gulp`
+
+Install local dependencies:
+
+- `bundle install`
+- `npm install`
+- Run `gulp` or `gulp watch` to compile CSS into `css/`
 
 ## Modules
 With the exception of [base element styles](https://github.com/bensmithett/style/tree/master/stylesheets/base) & [global state classes](https://github.com/bensmithett/style/blob/master/stylesheets/_state.sass), everything is a module. Modules are standalone, reusable components that have no knowledge of their parent container. Their only dependencies are the app’s base styles.
