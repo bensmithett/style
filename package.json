@@ -1,0 +1,29 @@
+{
+  "name": "style",
+  "version": "0.2.0",
+  "description": "A starting point for scalable, maintainable CSS architecture.",
+  "main": "index.html",
+  "dependencies": {
+    "gulp": "~3.5.2"
+  },
+  "devDependencies": {
+    "gulp-compass": "~1.1.3",
+    "gulp-autoprefixer": "0.0.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bensmithett/style.git"
+  },
+  "keywords": [
+    "css",
+    "smacss",
+    "oocss",
+    "bem"
+  ],
+  "author": "Ben Smithett",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bensmithett/style/issues"
+  },
+  "homepage": "https://github.com/bensmithett/style"
+}
