@@ -16,7 +16,7 @@ I wrote a [blog post](http://webuild.envato.com/blog/how-to-scale-and-maintain-l
 
 Style is designed as a starting point to work with your own asset compilation process (eg an [asset pipeline](http://guides.rubyonrails.org/asset_pipeline.html) or a [grunt](http://gruntjs.com/) or [gulp](http://gulpjs.com/) task).
 
-You'll probably just want to drop the `stylesheets` folder into your usual stylesheets path (note the dependencies in the `Gemfile` and Compass configuration in `config.rb`).
+You'll probably just want to drop the `stylesheets` folder into your usual stylesheets path (note the dependencies in `Gemfile` & `package.json` and configuration in `config.rb` & `gulpfile.js`).
 
 That said, you can run this as a standalone project if you wish.
 
