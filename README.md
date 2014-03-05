@@ -1,3 +1,5 @@
+**Note:** Work on version 2 is underway! Susy 2, autoprefixr, metaquery & more changes [here](https://github.com/bensmithett/style/issues/5). For version 1, read on...
+
 # style
 
 A starting point for a scalable, maintainable CSS architecture.
