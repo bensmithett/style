@@ -1,5 +1,3 @@
-**Note:** Work on v2 is underway! Susy 2, autoprefixr, metaquery & more changes to come [here](https://github.com/bensmithett/style/issues/5).
-
 # style
 
 A starting point for a scalable, maintainable CSS architecture.
@@ -13,6 +11,10 @@ A starting point for a scalable, maintainable CSS architecture.
 You might choose to replace Compass & Susy with [Bourbon](http://bourbon.io/) & [Neat](http://neat.bourbon.io/) or your own alternatives.
 
 I wrote a [blog post](http://webuild.envato.com/blog/how-to-scale-and-maintain-legacy-css-with-sass-and-smacss/) explaining how we use this approach on the Envato [marketplaces](http://themeforest.net).
+
+<hr>
+**Note:** Work on v2 is underway! Susy 2, autoprefixr, metaquery & more changes to come [here](https://github.com/bensmithett/style/issues/5).
+<hr>
 
 ## Getting started
 Assuming you have your own plans for asset compilation, you'll probably just want to drop the `stylesheets` folder into your usual stylesheets path (note the dependencies in the `Gemfile` and Compass configuration in `config.rb`).
