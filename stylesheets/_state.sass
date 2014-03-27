@@ -1,14 +1,12 @@
-// Globally applicable state styles only!
-// Module-specific states belong with their module as a regular modifier class.
-// e.g .my-module--is-loading
+// Most states should be scoped to a module, e.g.
+//
+// .my-module.is-somestate {}
+// or
+// .my-module[data-state=somestate] {}
+//
+// These ones are the exception to the rule (they're super common and globally applicable)
 
 .is-hidden
-  display: none
-
-.no-js .is-hidden--no-js
-  display: none
-
-.js .is-hidden--js
   display: none
 
 .is-visually-hidden

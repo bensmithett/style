@@ -2,13 +2,15 @@
 
 // Mixin & function libraries
 // ------------------------------------------------
+
+// TODO: Nuke this section. Mixins & functions should be imported per-module as required (using import-once)
+
 // Vendor
-@import susy
+// @import susy
 
 // Yours
 // @import functions/**/*
 // @import mixins/**/*
-
 
 // Global config variables, colour palette, etc
 // ------------------------------------------------
@@ -17,7 +19,8 @@
 
 // Vendor CSS libraries (i.e. they actually output styles)
 // ------------------------------------------------
-@import bower_components/normalize-css/normalize.css
+// Special syntax for importing plain CSS files via https://github.com/chriseppstein/sass-css-importer
+@import "CSS:bower_components/normalize-css/normalize"
 
 
 // @font-face declarations
@@ -28,17 +31,18 @@
 
 // Named keyframe animations
 // ------------------------------------------------
-@import animations/**/*
+@import "animations/**/*"
 
 
 // Base element styles
 // ------------------------------------------------
-@import base/**/*
+@import "base/**/*"
 
 
 // Modules
 // ------------------------------------------------
-@import modules/**/*
+// TODO: These need to be updated to work with Susy 2.0 before they'll compile
+// @import modules/**/*
 
 
 // Global state classes
