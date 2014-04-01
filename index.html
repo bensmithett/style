@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--[if lte IE 8]> <html class="no-js lt-ie9 fixed-layout"> <![endif]-->
+<!--[if lte IE 8]> <html class="no-js lt-ie9 breakpoint-desktop"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
@@ -14,13 +14,28 @@
     <!--[if lte IE 8]>
       <link rel="stylesheet" href="css/application-lt-ie9.css" />
     <![endif]-->
+
+    <!--  metaquery (https://github.com/benschwarz/metaquery)
+          You should minify & inline metaquery.js in production.
+    -->
+    <!--[if gt IE 8]><!-->
+      <script src="bower_components/metaquery/metaquery.js"></script>
+      <meta name="breakpoint" content="phone" media="(max-width: 568px)">
+      <meta name="breakpoint" content="tablet" media="(min-width: 569px) and (max-width: 1024px)">
+      <meta name="breakpoint" content="tablet-and-below" media="(max-width: 1024px)">
+      <meta name="breakpoint" content="desktop" media="(min-width: 1025px)">
+      <meta name="breakpoint" content="retina" media="only screen and (-webkit-min-device-pixel-ratio : 2)">
+    <!--<![endif]-->
+
   </head>
 
   <body>
     <div id="full-width-container" style="background-color: beige;">
       <div class="grid">
-        <div class="example-module-a">
-          <div class="example-module-b">o hai</div>
+        <div class="page">
+          <div class="page__header">Header</div>
+          <div class="page__sidebar">Sidebar</div>
+          <div class="page__content">Content</div>
         </div>
       </div>
     </div>

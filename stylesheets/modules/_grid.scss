@@ -1,0 +1,12 @@
+$grid: (
+  columns: 12,
+  container: 1025px,
+  global-box-sizing: border-box,
+  gutters: 0.3,
+  math: fluid
+);
+
+.grid {
+  @include container( $grid );
+  padding: 0 10px
+}

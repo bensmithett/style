@@ -6,7 +6,11 @@ all: sass autoprefixer
 
 sass: stylesheets/*.sass
 	@echo "Compiling Sass..."
-	@sass -r sass-css-importer -r sass-globbing stylesheets/application.sass:css/application.css stylesheets/application-lt-ie9.sass:css/application-lt-ie9.css
+	@sass -r sass-css-importer \
+				-r sass-globbing \
+				-r susy \
+				stylesheets/application.sass:css/application.css \
+				stylesheets/application-lt-ie9.sass:css/application-lt-ie9.css
 
 autoprefixer: css/**
 	@echo "Autoprefixing..."
