@@ -1,2 +1,4 @@
 .sass-cache/
 css/
+node_modules/
+bower_components/

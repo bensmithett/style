@@ -1,47 +1,40 @@
 @charset "utf-8"
 
-// Mixin & function libraries
+
+// Module dependencies
 // ------------------------------------------------
-// Vendor
-@import compass
-@import susy
+// TODO: Nuke this section & import dependencies in modules where required (using import-once)
+// import-once currently isn't working with globbing https://github.com/chriseppstein/compass/issues/1529
 
-// Yours
-@import functions/**/*
-@import mixins/**/*
+// Vendor mixin/function libraries
+@import "susy"
 
+// Your mixins & functions
+// @import "functions/**/*"
+@import "mixins/**/*"
 
 // Global config variables, colour palette, etc
-// ------------------------------------------------
-@import config
-
-
-// Vendor CSS libraries (i.e. they actually output styles)
-// ------------------------------------------------
-@import bower_components/normalize-css/normalize.css
-
+@import "config"
 
 // @font-face declarations
-// If you're using a JS webfont loader you won't need this
-// ------------------------------------------------
-@import fonts
-
+@import "fonts"
 
 // Named keyframe animations
-// ------------------------------------------------
-@import animations/**/*
+@import "animations/**/*"
 
+// ------------------------------------------------
+
+
+
+// Vendor libraries that actually output styles
+// Special syntax for importing plain CSS files via https://github.com/chriseppstein/sass-css-importer
+@import "CSS:./../bower_components/normalize-css/normalize"
 
 // Base element styles
-// ------------------------------------------------
-@import base/**/*
-
+@import "base/**/*"
 
 // Modules
-// ------------------------------------------------
-@import modules/**/*
-
+@import "modules/**/*"
 
 // Global state classes
-// ------------------------------------------------
-@import state
+@import "global_state"

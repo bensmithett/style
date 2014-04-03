@@ -2,34 +2,48 @@
 
 A starting point for a scalable, maintainable CSS architecture.
 
-- [Compass](http://compass-style.org/) with [vertical rhythm](http://compass-style.org/reference/compass/typography/vertical_rhythm/)
-- [SMACSS](http://smacss.com/) modules with [BEM](http://bem.info/method/) syntax for modifiers & subcomponents
-- A [Susy](http://susy.oddbird.net/) mobile-first responsive grid module
+- [Sass 3.3](http://sass-lang.com/)
+- [autoprefixer](https://github.com/ai/autoprefixer) for vendor prefixes
+- [metaquery](https://github.com/benschwarz/metaquery)
+- [SMACSS](http://smacss.com/)-style modules with [BEM](http://bem.info/method/) syntax
+- A [Susy 2](http://susy.oddbird.net/) mobile-first responsive grid module
 - [Normalize.css](http://necolas.github.com/normalize.css/)
-- Standalone stylesheet for IE < 9
 
-You might choose to replace Compass & Susy with [Bourbon](http://bourbon.io/) & [Neat](http://neat.bourbon.io/) or your own alternatives.
-
-I wrote a [blog post](http://webuild.envato.com/blog/how-to-scale-and-maintain-legacy-css-with-sass-and-smacss/) explaining how we use this approach on the Envato [marketplaces](http://themeforest.net).
-
-<hr>
-**Note:** Work on v2 is underway! Susy 2, autoprefixr, metaquery & more changes to come [here](https://github.com/bensmithett/style/issues/5).
-<hr>
+[Here's how we use this approach](http://webuild.envato.com/blog/how-to-scale-and-maintain-legacy-css-with-sass-and-smacss/) on the [Envato Marketplaces](http://themeforest.net).
 
 ## Getting started
-Assuming you have your own plans for asset compilation, you'll probably just want to drop the `stylesheets` folder into your usual stylesheets path (note the dependencies in the `Gemfile` and Compass configuration in `config.rb`).
 
-That said, you can run this as a standalone Compass project if you wish.
+Style is designed as a starting point to work with your own asset compilation process (eg an [asset pipeline](http://guides.rubyonrails.org/asset_pipeline.html), [grunt](http://gruntjs.com/) or [gulp](http://gulpjs.com/) task).
 
-1. `bundle install`
-- `compass watch` or `compass compile` to compile CSS to `css/`
+### Use with your asset pipeline
+
+Just drop the `stylesheets` directory into your usual stylesheets path (note the dependencies in `Gemfile`, `package.json` & `bower.json`).
+
+### Standalone compilation
+
+Requires ruby, node.js and [bundler](http://bundler.io/): `gem install bundler`
+
+Install dependencies:
+
+- `bundle install`
+- `npm install`
+- `bower install`
+- Run `make` or `make watch` to compile CSS into `css/`
 
 ## Modules
-With the exception of [base element styles](https://github.com/bensmithett/style/tree/master/stylesheets/base) & [global state classes](https://github.com/bensmithett/style/blob/master/stylesheets/_state.sass), everything is a module. Modules are standalone, reusable components that have no knowledge of their parent container. Their only dependencies are the app’s base styles.
+
+Modules are the core of Style's architecture. A module:
+
+- Is defined in its own file (eg `modules/_my_module.sass`)
+- Is isolated, reusable & disposable.
+- Has no knowledge of its context (i.e. doesn't depend on styles from a particular parent element - it can be rendered anywhere)
+- Minimises its own [depth of applicability](http://smacss.com/book/applicability) so that it can safely contain other modules
+- Has no context-specific dimensions. Read [Objects in Space](https://medium.com/objects-in-space/f6f404727) for more on this.
 
 ### Simple module
 
 Here's what a simple module, `/stylesheets/modules/_simple_widget.sass`, might look like:
+
 ```sass
 .simple-widget
   color: goldenrod
@@ -37,76 +51,60 @@ Here's what a simple module, `/stylesheets/modules/_simple_widget.sass`, might l
 
 ### Complex module
 
-Here's a slightly more complex module, `/stylesheets/modules/_fancy_widget.sass`:
+Here's a slightly more complex module, `/stylesheets/modules/_comment.sass`:
 ```sass
-// The canonical fancy-widget class
-.fancy-widget
+.comment
   color: fuchsia
 
-// A modified fancy-widget
-.fancy-widget--important
-  @extend .fancy-widget
+  // State is applied with a second class...
+  &.is-loading
+    background: url(spinner.gif)
+
+  // ...or with a data attribute
+  &[data-state=loading]
+    background: url(spinner.gif)
+
+// A modified comment
+.comment--important
+  @extend .comment
   font-weight: bold
 
-// Hey look, module-specific states are just modifiers too! 
-// The "is" keyword indicates that this is a state class.
-.fancy-widget--is-loading
-  background: url(spinner.gif)
-  
-  // It's up to you whether you add modifier classes on top of the module class...
-  // <b class="fancy-widget fancy-widget--is-loading">
-  // or @extend the original so you can replace it...
-  // <b class="fancy-widget--is-loading">
-  //
-  // I still haven't decided which approach I like better.
-
-// Sometimes it's easier to update a  single state attribute with JS instead of
-// faffing about with adding & removing state classes. That's ok.
-.fancy-widget[data-state=is-loading]
-  background: url(spinner.gif)
-
-// A subcomponent (some component that must be a child of .fancy-widget)
-// Generally subcomponent classes exist purely to position an element inside the module.
-// Whatever is inside a subcomponent can usually be extracted out into its own module.
-.fancy-widget__close-button
+// A submodule (some module that *must* be a child of .comment)
+// Whatever is inside a submodule can usually be extracted out into its own module.
+// In this case, .comment__avatar is a container for a separate .avatar module.
+.comment__avatar
   margin-left: 20px
+  width: 100px
 ```
 
 ## Media queries
-Breakpoint-specific styles are kept right inside their module via Susy's [`at-breakpoint`](http://susy.oddbird.net/guides/reference/#ref-at-breakpoint) mixin.
+Media queries in CSS are for chumps. [Use metaquery](http://glenmaddern.com/metaquery-and-the-end-of-media-queries/) for mobile-first responsive modules:
+
 ```sass
 .my-module
   color: floralwhite
   
-  +at-breakpoint($tablet-and-above)
+  .breakpoint-tablet &
     color: plum
   
-  +at-breakpoint($desktop-and-above)
+  .breakpoint-desktop &
     color: burlywood
 ```
 
-## Internet Explorer
-Like breakpoint-specific styles, IE-specific styles are kept with the selector they belong to, but are only output in a seperate `application-lt-ie9.css` stylesheet that is included with conditional comments ([hat tip](http://jakearchibald.github.com/sass-ie/)).
+## Grid
+Style comes with a `.grid` module. It's just a [Susy](http://susydocs.oddbird.net/) container. When you put modules inside a `.grid`, you can use Susy's functions & mixins to align your module to the grid.
+
+There are a lot, but the main one you'll use is [`span`](http://susydocs.oddbird.net/en/latest/toolkit/#span-mixin):
 
 ```sass
-.my-module
-  color: olive
-  
-  @if $lt-ie9
-    position: relative
+.page__sidebar
+  +span(3 of 12)
+
+.page__content
+  +span(last 9 of 12)
 ```
 
-In `application-lt-ie9.sass` and `application-fixed.sass`, `$tablet-and-above` & `$desktop-and-above` breakpoint blocks are scoped to a `.fixed-layout` class instead of being scoped to media queries. All other breakpoints (eg `$tablet-and-below`) are discarded.
-
-## Further reading
-
-Ideas borrowed from many places, including:
-- [SMACSS](http://smacss.com/) by Jonathan Snook
-- [Clean out your Sass junk drawer](http://gist.io/4436524) by Dale Sand
-- [About HTML semantics and front-end architecture](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/) by Nicolas Gallagher
-- [MindBEMding - getting your head 'round BEM syntax](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) by Harry Roberts
-- [IE-friendly mobile-first CSS with Sass 3.2](http://jakearchibald.github.com/sass-ie/) by Jake Archibald
-- [Organising SASS Assets in Rails](https://coderwall.com/p/bqxhxg) by Ben Taylor
+See the included `.page` module for a responsive example.
 
 ## License
 Style is released under the [MIT License](http://ben.mit-license.org/)

@@ -1,10 +1,8 @@
-// Set baseline font size & line height
-// See http://compass-style.org/reference/compass/typography/vertical_rhythm/#mixin-establish-baseline
-+establish-baseline
-
-// Set box-sizing: border-box and set the $border-box-sizing variable used internally by Susy
-// See http://susy.oddbird.net/guides/reference/#ref-border-box-mixin
-+border-box-sizing
+// Obvs from http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+*,
+*:before,
+*:after
+  box-sizing: border-box
 
 // The basics
 html
@@ -18,37 +16,3 @@ body
 
 a
   color: $green
-
-  &:hover, &:focus
-    color: darken($green, 20%)
-
-p
-  +leader(0)
-  +trailer(1)
-
-  &:last-child
-    +trailer(0)
-
-// Lists
-ul, ol
-  +leader(0)
-  +trailer(1)
-  padding-left: rhythm(1.5)
-
-  li
-    +trailer(0)
-
-h1, .h1
-  +adjust-font-size-to(32px)
-  +leader(0)
-  +trailer(1, 32px)
-
-h2, .h2
-  +adjust-font-size-to(24px)
-  +leader(0)
-  +trailer(1, 24px)
-
-h3, .h3
-  +adjust-font-size-to(19px)
-  +leader(0)
-  +trailer(1, 19px)

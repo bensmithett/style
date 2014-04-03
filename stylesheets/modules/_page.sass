@@ -1,0 +1,26 @@
+.page
+  height: 500px
+
+.page__header
+  +span(full)
+  background: rgba(255, 0, 0, 0.4)
+  margin-bottom: 20px
+
+.page__sidebar
+  +span(full)
+  background: rgba(0, 255, 0, 0.4)
+  margin-bottom: 20px
+
+  .breakpoint-desktop &
+    +span(3 of 12)
+    
+.page__content
+  +span(full)
+  background: rgba(0, 0, 255, 0.4)
+
+  .breakpoint-tablet &
+    +span(break isolate 6 of 8 at 2)
+
+  .breakpoint-desktop &
+    +span(last 9 of 12)
+  

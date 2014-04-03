@@ -1,6 +1,7 @@
 {
   "name": "style",
   "dependencies": {
-    "normalize-css": "~2.1.3"
+    "normalize-css": "~3.0.0",
+    "metaquery": "~1.1.1"
   }
 }
