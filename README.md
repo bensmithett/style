@@ -4,7 +4,7 @@ A starting point for a scalable, maintainable CSS architecture.
 
 - [Sass 3.3](http://sass-lang.com/)
 - [autoprefixer](https://github.com/ai/autoprefixer) for vendor prefixes
-- [metaquery](https://github.com/benschwarz/metaquery)
+- [metaquery](https://github.com/benschwarz/metaquery) for better responsive web design
 - [SMACSS](http://smacss.com/)-style modules with [BEM](http://bem.info/method/) syntax
 - A [Susy 2](http://susy.oddbird.net/) mobile-first responsive grid module
 - [Normalize.css](http://necolas.github.com/normalize.css/)
