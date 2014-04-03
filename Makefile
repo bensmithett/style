@@ -5,19 +5,19 @@ AUTOPREFIXER_BROWSERS="> 1%, last 2 versions, Firefox ESR, Explorer 9"
 .PHONY: all clean watch
 
 all: sass autoprefixer
-	@echo "Done!"
+  @echo "Done!"
 
 watch:
-	@$(BIN)/wach -o "stylesheets/**/*" make all
+  @$(BIN)/wach -o "stylesheets/**/*" make all
 
 sass: stylesheets/*.sass
-	@echo "Compiling Sass..."
-	@sass -r sass-css-importer \
-				-r sass-globbing \
-				-r susy \
-				stylesheets/application.sass:css/application.css \
-				stylesheets/application-lt-ie9.sass:css/application-lt-ie9.css
+  @echo "Compiling Sass..."
+  @sass -r sass-css-importer \
+        -r sass-globbing \
+        -r susy \
+        stylesheets/application.sass:css/application.css \
+        stylesheets/application-lt-ie9.sass:css/application-lt-ie9.css
 
 autoprefixer: css/**
-	@echo "Autoprefixing..."
-	@$(BIN)/autoprefixer css/** -b $(AUTOPREFIXER_BROWSERS)
+  @echo "Autoprefixing..."
+  @$(BIN)/autoprefixer css/** -b $(AUTOPREFIXER_BROWSERS)
