@@ -11,10 +11,6 @@ A starting point for a scalable, maintainable CSS architecture.
 
 [Here's how we use this approach](http://webuild.envato.com/blog/how-to-scale-and-maintain-legacy-css-with-sass-and-smacss/) on the [Envato Marketplaces](http://themeforest.net).
 
-<hr>
-**Note:** Work on v2 is underway! Susy 2, autoprefixr, metaquery & more changes to come [here](https://github.com/bensmithett/style/issues/5).
-<hr>
-
 ## Getting started
 
 Style is designed as a starting point to work with your own asset compilation process (eg an [asset pipeline](http://guides.rubyonrails.org/asset_pipeline.html), [grunt](http://gruntjs.com/) or [gulp](http://gulpjs.com/) task).
