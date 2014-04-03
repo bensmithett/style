@@ -1,50 +1,40 @@
 @charset "utf-8"
 
-// Mixin & function libraries
+
+// Module dependencies
 // ------------------------------------------------
+// TODO: Nuke this section & import dependencies in modules where required (using import-once)
+// import-once currently isn't working with globbing https://github.com/chriseppstein/compass/issues/1529
 
-// TODO: Nuke this section. Mixins & functions should be imported per-module as required (using import-once)
+// Vendor mixin/function libraries
+@import "susy"
 
-// Vendor
-@import susy
-
-// Yours
-// @import functions/**/*
-// @import mixins/**/*
+// Your mixins & functions
+// @import "functions/**/*"
+@import "mixins/**/*"
 
 // Global config variables, colour palette, etc
-// ------------------------------------------------
 @import "config"
 
+// @font-face declarations
+@import "fonts"
 
-// Vendor CSS libraries (i.e. they actually output styles)
+// Named keyframe animations
+@import "animations/**/*"
+
 // ------------------------------------------------
+
+
+
+// Vendor libraries that actually output styles
 // Special syntax for importing plain CSS files via https://github.com/chriseppstein/sass-css-importer
 @import "CSS:./../bower_components/normalize-css/normalize"
 
-
-// @font-face declarations
-// If you're using a JS webfont loader you won't need this
-// ------------------------------------------------
-@import "fonts"
-
-
-// Named keyframe animations
-// ------------------------------------------------
-@import "animations/**/*"
-
-
 // Base element styles
-// ------------------------------------------------
 @import "base/**/*"
 
-
 // Modules
-// ------------------------------------------------
-// TODO: These need to be updated to work with Susy 2.0 before they'll compile
 @import "modules/**/*"
 
-
 // Global state classes
-// ------------------------------------------------
 @import "global_state"
