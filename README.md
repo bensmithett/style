@@ -17,7 +17,7 @@ Style is designed as a starting point to work with your own asset compilation pr
 
 ### Use with your asset pipeline
 
-Just drop the `stylesheets` directory into your usual stylesheets path (note the dependencies in `Gemfile` & `package.json`).
+Just drop the `stylesheets` directory into your usual stylesheets path (note the dependencies in `Gemfile`, `package.json` & `bower.json`).
 
 ### Standalone compilation
 
@@ -27,6 +27,7 @@ Install dependencies:
 
 - `bundle install`
 - `npm install`
+- `bower install`
 - Run `make` or `make watch` to compile CSS into `css/`
 
 ## Modules
