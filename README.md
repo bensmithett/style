@@ -28,7 +28,8 @@ Install dependencies:
 - `bundle install`
 - `npm install`
 - `bower install`
-- Run `make` or `make watch` to compile CSS into `css/`
+
+Then run `make` or `make watch` to compile CSS into `css/`
 
 ## Modules
 
