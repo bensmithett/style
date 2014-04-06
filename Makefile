@@ -2,7 +2,7 @@ BIN=node_modules/.bin
 AUTOPREFIXER_BROWSERS="> 1%, last 2 versions, Firefox ESR, Explorer 9"
 
 # See https://gist.github.com/toolmantim/6200029#file-makefile-L67-L71
-.PHONY: all clean watch
+.PHONY: all watch sass autoprefixer
 
 all: sass autoprefixer
 	@echo "Done!"
