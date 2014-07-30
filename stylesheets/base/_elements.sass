@@ -1,13 +1,13 @@
-// Obvs from http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+html
+  box-sizing: border-box
+  font-family: $helvetica
+  height: 100%
+
+// http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 *,
 *:before,
 *:after
-  box-sizing: border-box
-
-// The basics
-html
-  font-family: $helvetica
-  height: 100%
+  box-sizing: inherit
 
 body
   background-color: $white

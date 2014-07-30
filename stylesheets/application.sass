@@ -1,40 +1,30 @@
 @charset "utf-8"
 
+// You should only include base styles, modules & utilities in this top level file.
 
-// Module dependencies
+// Whether you glob import everything, or manually import the modules & utilities
+// required for this particular CSS bundle is up to you.
+
+// Everything else (functions, mixins, fonts, animations, color variables) should be
+// @imported at the top of the module that actually requires it. Yay dependency management!
+
+
+// Base styles
 // ------------------------------------------------
-// TODO: Nuke this section & import dependencies in modules where required (using import-once)
-// import-once currently isn't working with globbing https://github.com/chriseppstein/compass/issues/1529
-
-// Vendor mixin/function libraries
-@import "susy"
-
-// Your mixins & functions
-// @import "functions/**/*"
-@import "mixins/**/*"
-
-// Global config variables, colour palette, etc
-@import "config"
-
-// @font-face declarations
-@import "fonts"
-
-// Named keyframe animations
-@import "animations/**/*"
-
-// ------------------------------------------------
-
-
-
-// Vendor libraries that actually output styles
+// Normalize.css
 // Special syntax for importing plain CSS files via https://github.com/chriseppstein/sass-css-importer
 @import "CSS:./../bower_components/normalize-css/normalize"
 
-// Base element styles
+// Our own base styles
 @import "base/**/*"
 
+
 // Modules
+// ------------------------------------------------
 @import "modules/**/*"
 
-// Global state classes
-@import "global_state"
+
+// Utilities
+// ------------------------------------------------
+// See https://github.com/suitcss/suit/blob/master/doc/utilities.md
+@import "utilities/**/*"

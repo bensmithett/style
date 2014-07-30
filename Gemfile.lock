@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    compass-import-once (1.0.4)
+      sass (>= 3.2, < 3.5)
     sass (3.3.4)
     sass-css-importer (1.0.0.beta.0)
       sass (>= 3.1)
@@ -13,6 +15,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  compass-import-once
   sass (~> 3.3.4)
   sass-css-importer (~> 1.0.0.beta.0)
   sass-globbing (~> 1.1.0)
