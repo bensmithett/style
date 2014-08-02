@@ -1,11 +1,5 @@
 @charset "utf-8"
 
-
-// Module dependencies
-// ------------------------------------------------
-// TODO: Nuke this section & import dependencies in modules where required (using import-once)
-// import-once currently isn't working with globbing https://github.com/chriseppstein/compass/issues/1529
-
 // Vendor mixin/function libraries
 @import "susy"
 
@@ -13,28 +7,32 @@
 // @import "functions/**/*"
 @import "mixins/**/*"
 
-// Global config variables, colour palette, etc
-@import "config"
+// Global config variables: colors, font stacks, etc
+@import "config/**/*"
 
-// @font-face declarations
-@import "fonts"
+// @font-face webfonts
+@import "fonts/**/*"
 
-// Named keyframe animations
+// @keyframe animations
 @import "animations/**/*"
 
+
+// Base styles
 // ------------------------------------------------
-
-
-
-// Vendor libraries that actually output styles
+// Normalize.css
 // Special syntax for importing plain CSS files via https://github.com/chriseppstein/sass-css-importer
 @import "CSS:./../bower_components/normalize-css/normalize"
 
-// Base element styles
+// Our own base styles
 @import "base/**/*"
 
+
 // Modules
+// ------------------------------------------------
 @import "modules/**/*"
 
-// Global state classes
-@import "global_state"
+
+// Utilities
+// ------------------------------------------------
+// See https://github.com/suitcss/suit/blob/master/doc/utilities.md
+@import "utilities/**/*"

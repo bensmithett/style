@@ -5,8 +5,3 @@ $grid: (
   gutters: 0.3,
   math: fluid
 );
-
-.grid {
-  @include container( $grid );
-  padding: 0 10px
-}

@@ -16,7 +16,7 @@ sass: stylesheets/*.sass
 				-r sass-globbing \
 				-r susy \
 				stylesheets/application.sass:css/application.css \
-				stylesheets/application-lt-ie9.sass:css/application-lt-ie9.css
+				stylesheets/application-lt-ie9.sass:css/application-lt-ie9.css --trace
 
 autoprefixer: css/**
 	@echo "Autoprefixing..."
