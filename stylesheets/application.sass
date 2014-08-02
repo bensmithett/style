@@ -1,12 +1,20 @@
 @charset "utf-8"
 
-// You should only include base styles, modules & utilities in this top level file.
+// Vendor mixin/function libraries
+@import "susy"
 
-// Whether you glob import everything, or manually import the modules & utilities
-// required for this particular CSS bundle is up to you.
+// Your mixins & functions
+// @import "functions/**/*"
+@import "mixins/**/*"
 
-// Everything else (functions, mixins, fonts, animations, color variables) should be
-// @imported at the top of the module that actually requires it. Yay dependency management!
+// Global config variables: colors, font stacks, etc
+@import "config/**/*"
+
+// @font-face webfonts
+@import "fonts/**/*"
+
+// @keyframe animations
+@import "animations/**/*"
 
 
 // Base styles

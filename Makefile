@@ -14,7 +14,6 @@ sass: stylesheets/*.sass
 	@echo "Compiling Sass..."
 	@sass -r sass-css-importer \
 				-r sass-globbing \
-				-r 'compass/import-once/activate' \
 				-r susy \
 				stylesheets/application.sass:css/application.css \
 				stylesheets/application-lt-ie9.sass:css/application-lt-ie9.css --trace

@@ -31,17 +31,30 @@ Install dependencies:
 
 Then run `make` or `make watch` to compile CSS into `css/`
 
-## Modules
+## Outline
 
-Modules are the core of Style's architecture. A module:
+Styles are organised into three basic categories:
+
+- Base 
+- Modules
+- Utilities
+
+### Base
+
+The number of core default styles that you build the rest of your application in should be kept as low as possible. [Normalize.css](http://necolas.github.com/normalize.css/) plus the small number of other base styles specified in this repo are usually enough.
+
+### Modules
+
+Modules (you might also know them as Components, Objects or Blocks) are the core of Style's architecture. A module:
 
 - Is defined in its own file (eg `modules/_my_module.sass`)
 - Is isolated, reusable & disposable.
+- Depends only on your base styles (in this case, Normalize + a small number of additional defaults)
 - Has no knowledge of its context (i.e. doesn't depend on styles from a particular parent element - it can be rendered anywhere)
 - Minimises its own [depth of applicability](http://smacss.com/book/applicability) so that it can safely contain other modules
 - Has no context-specific dimensions. Read [Objects in Space](https://medium.com/objects-in-space/f6f404727) for more on this.
 
-### Simple module
+#### Simple module
 
 Here's what a simple module, `/stylesheets/modules/_simple_widget.sass`, might look like:
 
@@ -50,9 +63,10 @@ Here's what a simple module, `/stylesheets/modules/_simple_widget.sass`, might l
   color: goldenrod
 ```
 
-### Complex module
+#### Complex module
 
 Here's a slightly more complex module, `/stylesheets/modules/_comment.sass`:
+
 ```sass
 .comment
   color: fuchsia
@@ -65,9 +79,8 @@ Here's a slightly more complex module, `/stylesheets/modules/_comment.sass`:
   &[data-state=loading]
     background: url(spinner.gif)
 
-// A modified comment
+// Modifier classes can add extra styles for certain situations.
 .comment--important
-  @extend .comment
   font-weight: bold
 
 // A submodule (some module that *must* be a child of .comment)
@@ -77,6 +90,16 @@ Here's a slightly more complex module, `/stylesheets/modules/_comment.sass`:
   margin-left: 20px
   width: 100px
 ```
+
+For a more in-depth look at how to use modifier classes, state classes & state data attributes, read [BEM Modifiers: multiple classes vs @extend](http://bensmithett.com/bem-modifiers-multiple-classes-vs-extend/).
+
+### Utilities
+
+Utilities are borrowed directly from [SUIT](https://github.com/suitcss/suit/blob/master/doc/utilities.md). They are helper classes that define common utility styles and can be used anywhere on any element.
+
+`!important` is OK in utility classes, as you'll usually want them to override a module's styles. E.g., I'd always expect `u-hidden` to hide an element even if it also has module class that specifies `display: block`.
+
+I tend to use them sparingly. Don't be afraid to write `float: left` in a module even if you have a utility class that does the same thing. Instead of using utility classes to avoid writing any default styles, use them in situations where you would otherwise need to define a new module class.
 
 ## Media queries
 Media queries in CSS are for chumps. [Use metaquery](http://glenmaddern.com/metaquery-and-the-end-of-media-queries/) for mobile-first responsive modules:
