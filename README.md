@@ -41,7 +41,7 @@ Styles are organised into three basic categories:
 
 ### Base
 
-The number of core default styles that you build the rest of your application in should be kept as low as possible. [Normalize.css](http://necolas.github.com/normalize.css/) plus the small number of other base styles specified in this repo are usually enough.
+The number of core default styles that you build the rest of your application on top of should be kept as low as possible. [Normalize.css](http://necolas.github.com/normalize.css/) plus the small number of other base styles specified in this repo are usually enough.
 
 ### Modules
 
@@ -99,7 +99,7 @@ Utilities are borrowed directly from [SUIT](https://github.com/suitcss/suit/blob
 
 `!important` is OK in utility classes, as you'll usually want them to override a module's styles. E.g., I'd always expect `u-hidden` to hide an element even if it also has module class that specifies `display: block`.
 
-I tend to use them sparingly. Don't be afraid to write `float: left` in a module even if you have a utility class that does the same thing. Instead of using utility classes to avoid writing any default styles, use them in situations where you would otherwise need to define a new module class.
+I tend to use them sparingly. Don't be afraid to write `float: left` in a module even if you have a utility class that does the same thing. Instead of using utility classes to avoid duplicating any styles, use them in situations where you would otherwise need to define a new module class.
 
 ## Media queries
 Media queries in CSS are for chumps. [Use metaquery](http://glenmaddern.com/metaquery-and-the-end-of-media-queries/) for mobile-first responsive modules:
