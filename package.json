@@ -1,6 +1,6 @@
 {
   "name": "style",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "A starting point for scalable, maintainable CSS architecture.",
   "main": "index.html",
   "devDependencies": {
