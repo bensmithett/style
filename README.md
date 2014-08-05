@@ -41,7 +41,7 @@ Styles are organised into three basic categories:
 
 ### Base
 
-The number of core default styles that you build the rest of your application on top of should be kept as low as possible. [Normalize.css](http://necolas.github.com/normalize.css/) plus the small number of other base styles specified in this repo are usually enough.
+The number of core default styles that you build the rest of your application on top of should be kept as low as possible. [Normalize.css](http://necolas.github.com/normalize.css/) plus the few other base styles specified in this repo are usually enough.
 
 ### Modules
 
