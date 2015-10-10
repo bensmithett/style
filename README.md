@@ -1,134 +1,167 @@
-# style
+# Style
 
-A starting point for a scalable, maintainable CSS architecture.
+An opinionated starting point for a scalable, maintainable CSS architecture.
 
-- [Sass 3.3](http://sass-lang.com/)
-- [autoprefixer](https://github.com/ai/autoprefixer) for vendor prefixes
-- [metaquery](https://github.com/benschwarz/metaquery) for responsive breakpoints
-- [SMACSS](http://smacss.com/)-style modules with [BEM](http://bem.info/method/) syntax
-- A [Susy 2](http://susy.oddbird.net/) mobile-first responsive grid module
-- [Normalize.css](http://necolas.github.com/normalize.css/)
+- [Sass](http://sass-lang.com/) ([node-sass](https://github.com/sass/node-sass) 3.3)
+- [Autoprefixer](https://github.com/postcss/autoprefixer)
+- [Sanitize.css](https://10up.github.io/sanitize.css/)
+- [Metaquery](https://github.com/benschwarz/metaquery)
+- [SMACSS](http://smacss.com/)-style components written with [BEVM](http://webuild.envato.com/blog/chainable-bem-modifiers/) syntax
+- Example build pipelines for [Gulp](http://gulpjs.com/) & [Webpack](https://webpack.github.io/)
 
-[Here's how we use this approach](http://webuild.envato.com/blog/how-to-scale-and-maintain-legacy-css-with-sass-and-smacss/) on the [Envato Marketplaces](http://themeforest.net).
+Style is an approach to writing CSS [born](http://webuild.envato.com/blog/how-to-scale-and-maintain-legacy-css-with-sass-and-smacss/) & [refined](http://market.envato.com/) over several years at [Envato](http://www.envato.com/) by the team responsible for maintaining & evolving the 9 year old Rails codebase that powers [Envato Market](http://market.envato.com/).
+
+## Should you use it?
+
+If you're starting a new project today, especially a JavaScript-heavy project, I'd strongly recommend investigating [CSS Modules](http://glenmaddern.com/articles/css-modules).
+
+However Style's approach might be a better option if any of the following apply to you:
+
+- Views or templates authored in something other than JavaScript (e.g. PHP, [Twig](http://twig.sensiolabs.org/), [ERB](http://apidock.com/ruby/ERB), [Slim](http://slim-lang.com/), etc)
+- Maintaining an existing CSS or Sass codebase
+- Simple static site projects
 
 ## Getting started
 
-Style is designed as a starting point to work with your own asset compilation process (eg an [asset pipeline](http://guides.rubyonrails.org/asset_pipeline.html), [grunt](http://gruntjs.com/) or [gulp](http://gulpjs.com/) task).
+Style is designed as a starting point to work with your own asset build process (eg an [asset pipeline](http://guides.rubyonrails.org/asset_pipeline.html), [Grunt](http://gruntjs.com/) or [Gulp](http://gulpjs.com/) task). Just be able to drop the `stylesheets` folder into your app & start styling!
 
-### Use with your asset pipeline
+Example build configurations are provided for Gulp & Webpack (see below for how to use them).
 
-Just drop the `stylesheets` directory into your usual stylesheets path (note the dependencies in `Gemfile`, `package.json` & `bower.json`).
+## General principles
 
-### Standalone compilation
+#### Every Sass file is compiled in isolation
 
-Requires ruby, node.js and [bundler](http://bundler.io/): `gem install bundler`
+JavaScript modules have shown us the benefits of small, independent files with explicitly declared dependencies rather than relying on lots of global variables.
 
-Install dependencies:
+Sass can be written the same way. In Style, every Sass file must explicitly `@import` any variables, functions or mixins that it uses. There is no global Sass context shared between files. Each file is compiled to CSS in isolation before being packaged into the final bundle.
 
-- `bundle install`
-- `npm install`
-- `bower install`
+[Read more about this approach](http://bensmithett.com/smarter-css-builds-with-webpack/#no-global-sass-context).
 
-Then run `make` or `make watch` to compile CSS into `css/`
+#### The component paradigm
 
-## Outline
+Style embraces the component paradigm, roughly as defined by [SMACSS Modules](https://smacss.com/book/type-module). [SUIT](https://github.com/suitcss/suit/) components, [OOCSS](https://github.com/stubbornella/oocss) components & [BEM](https://en.bem.info/method/definitions/) blocks are all in the same ballpark.
 
-Styles are organised into three basic categories:
+There are other CSS paradigms not centered around components such as [AMCSS](https://amcss.github.io/) & [Tachyons](http://tachyons.io/), each with their own merits, but I've found components easiest to work with.
 
-- Base 
-- Modules
-- Utilities
+## Style categories
 
-### Base
+Files in the `stylesheets` folder is divided into several categories:
 
-The number of core default styles that you build the rest of your application on top of should be kept as low as possible. [Normalize.css](http://necolas.github.com/normalize.css/) plus the few other base styles specified in this repo are usually enough.
+### `base`
 
-### Modules
+`base` contains the styles that all other styles are built upon. They are an implicit dependency of all your other styles - changing your reset styles will have a flow-on effect to all other styles, so in general they should not be changed once you start.
 
-Modules (you might also know them as Components, Objects or Blocks) are the core of Style's architecture. A module:
+`@font-face` declarations are also kept here, as they're an implicit dependency of any style rule that references a custom font in a `font` or `font-family` declaration.
 
-- Is defined in its own file (eg `modules/_my_module.sass`)
-- Is isolated, reusable & disposable.
-- Depends only on your base styles (in this case, Normalize + a small number of additional defaults)
+### `components`
+
+A component:
+
+- Is defined in its own file (eg `components/my_component.sass`)
+- Is **independent**, **reusable** & **disposable**.
+- Depends only on your base styles (in this case, Sanitize.css + the small number of additional styles set in `reset.sass`)
 - Has no knowledge of its context (i.e. doesn't depend on styles from a particular parent element - it can be rendered anywhere)
 - Minimises its own [depth of applicability](http://smacss.com/book/applicability) so that it can safely contain other modules
-- Has no context-specific dimensions. Read [Objects in Space](https://medium.com/objects-in-space/f6f404727) for more on this.
+- Has no context-specific size or position styles. Read [Objects in Space](https://medium.com/objects-in-space/f6f404727) for more on this.
 
-#### Simple module
+#### Simple component
 
-Here's what a simple module, `/stylesheets/modules/_simple_widget.sass`, might look like:
+Here's what a simple component, `components/simple_component.sass`, might look like:
 
 ```sass
-.simple-widget
+.simple-component
   color: goldenrod
 ```
 
-#### Complex module
+#### Complex component
 
-Here's a slightly more complex module, `/stylesheets/modules/_comment.sass`:
+Here's a slightly more complex component, `modules/comment.sass`:
 
 ```sass
+@import 'config/colors'
+
 .comment
-  color: fuchsia
+  color: $fuchsia
 
-  // State is applied with a second class...
-  &.is-loading
+  // Modifier classes can be used to modify a components styles for special cases
+  // and different states
+  &.-is-loading
     background: url(spinner.gif)
 
-  // ...or with a data attribute
-  &[data-state=loading]
-    background: url(spinner.gif)
+  &.-staff-comment
+    font-weight: bold
 
-// Modifier classes can add extra styles for certain situations.
-.comment--important
-  font-weight: bold
-
-// A submodule (some module that *must* be a child of .comment)
-// Whatever is inside a submodule can usually be extracted out into its own module.
-// In this case, .comment__avatar is a container for a separate .avatar module.
+// A subcomponent (some component that *must* be a child of .comment)
 .comment__avatar
   margin-left: 20px
   width: 100px
+// Whatever is inside a subcomponent can usually be extracted out into its own component,
+// with the subcomponent simply being used to size & position a generic container.
+// In this case, .comment__avatar is a container for a separate .avatar component.
 ```
 
-For a more in-depth look at how to use modifier classes, state classes & state data attributes, read [BEM Modifiers: multiple classes vs @extend](http://bensmithett.com/bem-modifiers-multiple-classes-vs-extend/).
+Read [Chainable BEM modifiers](http://webuild.envato.com/blog/chainable-bem-modifiers/) for a thorough explanation of the syntax used here for classes.
 
-### Utilities
+#### `grid` and `layout-box`
+
+The included `grid` and `layout-box` components can be used for pretty much all your layout needs, but feel free to replace them!
+
+### `config`
+
+Config files define configuration variables (e.g. colors, font stacks, common sizes). They don't output any CSS of their own, but should be imported into Sass files that do using `@import`.
+
+### `functions` and `mixins`
+
+Sass functions & mixins intended to be imported into other Sass files using `@import` & used to output some CSS.
+
+### `type`
+
+I've found that typography styles are a bit special. They're not quite component styles and they're not quite reset styles. The following use cases are common:
+
+- Styling a big block of raw HTML that has no classes (e.g. rendered from Markdown)
+- Applying your base typography styles to an element in a one-off situation (e.g. styling a heading that appears inside another component)
+
+Each Sass file in `type` defines some styles under a class (e.g. `.type-heading`) as well as applying those same styles to class-free elements that appear inside a `type-raw-html` block (e.g. `.type-raw-html h1`).
+
+### `utilities`
 
 Utilities are borrowed directly from [SUIT](https://github.com/suitcss/suit/blob/master/doc/utilities.md). They are helper classes that define common utility styles and can be used anywhere on any element.
 
-`!important` is OK in utility classes, as you'll usually want them to override a module's styles. E.g., I'd always expect `u-hidden` to hide an element even if it also has module class that specifies `display: block`.
+`!important` is OK in utility classes, as you'll usually want them to override a component's styles. E.g., I'd always expect `.u-hidden` to hide an element even if it also has component class that specifies `display: block`.
 
-I tend to use them sparingly. Don't be afraid to write `float: left` in a module even if you have a utility class that does the same thing. Instead of using utility classes to avoid duplicating any styles, use them in situations where you would otherwise need to define a new module class.
+I tend to use them sparingly. Don't be afraid to write `float: left` in a component even if you have a utility class that does the same thing. Instead of using utility classes to avoid duplicating any styles, use them in situations where you would otherwise need to define a whole new component.
 
-## Media queries
-Media queries in CSS are for chumps. [Use metaquery](http://glenmaddern.com/metaquery-and-the-end-of-media-queries/) for mobile-first responsive modules:
+## Responsive design & Metaquery
 
-```sass
-.my-module
-  color: floralwhite
-  
+[Writing media queries in CSS is for chumps.](http://glenmaddern.com/articles/metaquery-and-the-end-of-media-queries) Style uses [metaquery](https://github.com/benschwarz/metaquery) so you can use named breakpoint classes in your CSS.
+
+```
+.my-component
+  color: red
+
   .breakpoint-tablet &
-    color: plum
-  
-  .breakpoint-desktop &
-    color: burlywood
+    color: blue
+
+  .breakpoint-widescreen &
+    color: fuchsia
 ```
 
-## Grid
-Style comes with a `.grid` module. It's just a [Susy](http://susydocs.oddbird.net/) container. When you put modules inside a `.grid`, you can use Susy's functions & mixins to align your module to the grid.
+Some example breakpoints are defined in `index.html`.
 
-There are a lot, but the main one you'll use is [`span`](http://susydocs.oddbird.net/en/latest/toolkit/#span-mixin):
+## Build examples
 
-```sass
-.page__sidebar
-  +span(3 of 12)
+Style includes some fairly minimal examples you can use to build a final `app.css` stylesheet from the source files.
 
-.page__content
-  +span(last 9 of 12)
-```
+You'll need [Node.js](https://nodejs.org/en/) - I recommend installing it with [nodenv](https://github.com/OiNutter/nodenv).
 
-See the included `.page` module for a responsive example.
+Pull requests for examples for other build tools are welcome!
 
-## License
-Style is released under the [MIT License](http://ben.mit-license.org/)
+### Gulp
+
+- Install dependencies by running `npm install` in your terminal
+- Run a single build with `npm run gulp`
+- Watch & automatically recompile when you change a Sass file with `npm run gulp:watch`
+
+### Webpack
+
+TODO

@@ -1,12 +1,15 @@
 {
   "name": "style",
-  "version": "3.0.0",
-  "description": "A starting point for scalable, maintainable CSS architecture.",
+  "version": "4.0.0-beta1",
+  "description": "An opinionated starting point for scalable, maintainable CSS architecture.",
   "main": "index.html",
-  "devDependencies": {
-    "autoprefixer": "~1.1.20140327",
-    "wach": "~0.10.1",
-    "bower": "~1.3.1"
+  "engines": {
+    "node": "0.12.0",
+    "npm": "3.3.5"
+  },
+  "scripts": {
+    "gulp": "gulp style",
+    "gulp:watch": "gulp style:watch"
   },
   "repository": {
     "type": "git",
@@ -16,12 +19,24 @@
     "css",
     "smacss",
     "oocss",
-    "bem"
+    "bem",
+    "suit",
+    "sass"
   ],
-  "author": "Ben Smithett",
+  "author": "Ben Smithett 🐬 ben@bensmithett.com 🐬 @bensmithett",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bensmithett/style/issues"
   },
-  "homepage": "https://github.com/bensmithett/style"
+  "homepage": "https://github.com/bensmithett/style",
+  "devDependencies": {
+    "autoprefixer": "^6.0.3",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-postcss": "^6.0.1",
+    "gulp-sass": "^2.0.4",
+    "merge-stream": "^1.0.0",
+    "metaquery": "^1.2.5",
+    "sanitize.css": "^2.1.1"
+  }
 }
