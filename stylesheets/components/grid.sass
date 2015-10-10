@@ -1,0 +1,57 @@
+// Mostly copied from http://philipwalton.github.io/solved-by-flexbox/demos/grids/
+// Demo/playground here: http://codepen.io/bensmithett/pen/XJKRJJ
+
+$gutter: 10px
+$total-columns: 12
+
+.grid
+  display: flex
+  flex-wrap: wrap
+
+  &.-gutters
+    margin-left: -$gutter
+
+    > .grid__col
+      padding-left: $gutter
+
+  &.-align-top
+    align-items: flex-start
+
+  &.-align-bottom
+    align-items: flex-end
+
+  &.-align-center
+    align-items: center
+
+.grid__col
+  flex: 1
+
+  @for $i from 1 through $total-columns
+    &.-span-#{$i}
+      flex: none
+      width: ($i / $total-columns) * 100%
+
+  @for $i from 1 through $total-columns
+    &.-offset-#{$i}
+      margin-left: ($i / $total-columns) * 100%
+
+.breakpoint-large-phone
+  .grid__col
+    @for $i from 1 through $total-columns
+      &.-breakpoint-large-phone-span-#{$i}
+        flex: none
+        width: ($i / $total-columns) * 100%
+
+.breakpoint-tablet
+  .grid__col
+    @for $i from 1 through $total-columns
+      &.-breakpoint-tablet-span-#{$i}
+        flex: none
+        width: ($i / $total-columns) * 100%
+
+.breakpoint-widescreen
+  .grid__col
+    @for $i from 1 through $total-columns
+      &.-breakpoint-widescreen-span-#{$i}
+        flex: none
+        width: ($i / $total-columns) * 100%

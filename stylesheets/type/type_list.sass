@@ -1,0 +1,43 @@
+%list
+  padding: 0 0 20px 20px
+
+  &:last-child
+    padding-bottom: 0
+
+%circle
+  list-style: circle
+
+%square
+  list-style: square
+
+%alpha
+  list-style: lower-alpha
+
+%roman
+  list-style: lower-roman
+
+.type-list
+  @extend %list
+
+  &.-type-circle
+    @extend %circle
+  &.-type-square
+    @extend %square
+  &.-type-alpha
+    @extend %alpha
+  &.-type-roman
+    @extend %roman
+
+.type-raw-html ul
+  @extend %list
+  ul
+    @extend %circle
+    ul
+      @extend %square
+
+.type-raw-html ol
+  @extend %list
+  ol
+    @extend %alpha
+    ol
+      @extend %roman
