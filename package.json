@@ -1,6 +1,6 @@
 {
   "name": "style",
-  "version": "4.0.0-beta1",
+  "version": "4.0.0",
   "description": "An opinionated starting point for scalable, maintainable CSS architecture.",
   "main": "index.html",
   "engines": {
@@ -9,7 +9,9 @@
   },
   "scripts": {
     "gulp": "gulp style",
-    "gulp:watch": "gulp style:watch"
+    "gulp:watch": "gulp style:watch",
+    "webpack": "webpack",
+    "webpack:watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -31,12 +33,22 @@
   "homepage": "https://github.com/bensmithett/style",
   "devDependencies": {
     "autoprefixer": "^6.0.3",
+    "metaquery": "^1.2.5",
+    "sanitize.css": "^2.1.1",
+
+
+    "webpack": "^1.12.2",
+    "css-loader": "^0.19.0",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "postcss-loader": "^0.6.0",
+    "sass-loader": "^3.0.0",
+    "style-loader": "^0.12.4",
+    
+
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-postcss": "^6.0.1",
     "gulp-sass": "^2.0.4",
-    "merge-stream": "^1.0.0",
-    "metaquery": "^1.2.5",
-    "sanitize.css": "^2.1.1"
+    "merge-stream": "^1.0.0"
   }
 }

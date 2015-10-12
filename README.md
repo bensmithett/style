@@ -15,7 +15,7 @@ Style is an approach to writing CSS [born](http://webuild.envato.com/blog/how-to
 
 If you're starting a new project today, especially a JavaScript-heavy project, I'd strongly recommend investigating [CSS Modules](http://glenmaddern.com/articles/css-modules).
 
-However Style's approach might be a better option if any of the following apply to you:
+However Style's approach might be a better option in some cases:
 
 - Views or templates authored in something other than JavaScript (e.g. PHP, [Twig](http://twig.sensiolabs.org/), [ERB](http://apidock.com/ruby/ERB), [Slim](http://slim-lang.com/), etc)
 - Maintaining an existing CSS or Sass codebase
@@ -23,7 +23,7 @@ However Style's approach might be a better option if any of the following apply 
 
 ## Getting started
 
-Style is designed as a starting point to work with your own asset build process (eg an [asset pipeline](http://guides.rubyonrails.org/asset_pipeline.html), [Grunt](http://gruntjs.com/) or [Gulp](http://gulpjs.com/) task). Just be able to drop the `stylesheets` folder into your app & start styling!
+Style is designed as a starting point to work with your own asset build process (eg an [asset pipeline](http://guides.rubyonrails.org/asset_pipeline.html), [Grunt](http://gruntjs.com/) or [Gulp](http://gulpjs.com/) task). Just drop the `stylesheets` folder into your app & start styling!
 
 Example build configurations are provided for Gulp & Webpack (see below for how to use them).
 
@@ -45,13 +45,13 @@ There are other CSS paradigms not centered around components such as [AMCSS](htt
 
 ## Style categories
 
-Files in the `stylesheets` folder is divided into several categories:
+Files in the `stylesheets` folder are divided into several categories:
 
 ### `base`
 
 `base` contains the styles that all other styles are built upon. They are an implicit dependency of all your other styles - changing your reset styles will have a flow-on effect to all other styles, so in general they should not be changed once you start.
 
-`@font-face` declarations are also kept here, as they're an implicit dependency of any style rule that references a custom font in a `font` or `font-family` declaration.
+`@font-face` & `@keyframe` declarations are also kept here.
 
 ### `components`
 
@@ -59,7 +59,7 @@ A component:
 
 - Is defined in its own file (eg `components/my_component.sass`)
 - Is **independent**, **reusable** & **disposable**.
-- Depends only on your base styles (in this case, Sanitize.css + the small number of additional styles set in `reset.sass`)
+- Implicitly depends only on your base styles (in this case, Sanitize.css + the small number of additional styles set in `base`)
 - Has no knowledge of its context (i.e. doesn't depend on styles from a particular parent element - it can be rendered anywhere)
 - Minimises its own [depth of applicability](http://smacss.com/book/applicability) so that it can safely contain other modules
 - Has no context-specific size or position styles. Read [Objects in Space](https://medium.com/objects-in-space/f6f404727) for more on this.
@@ -104,7 +104,7 @@ Read [Chainable BEM modifiers](http://webuild.envato.com/blog/chainable-bem-modi
 
 #### `grid` and `layout-box`
 
-The included `grid` and `layout-box` components can be used for pretty much all your layout needs, but feel free to replace them!
+The included `grid` and `layout-box` are a good state for most layout needs, but feel free to replace them!
 
 ### `config`
 
@@ -154,6 +154,10 @@ Style includes some fairly minimal examples you can use to build a final `app.cs
 
 You'll need [Node.js](https://nodejs.org/en/) - I recommend installing it with [nodenv](https://github.com/OiNutter/nodenv).
 
+The `devDependencies` in `package.json` are grouped by build tool (no comments in JSON 😿) - feel free to delete the dependencies you don't need.
+
+The output CSS can be inspected in `css/app.css` or you can open `index.html` in a browser to see it in action.
+
 Pull requests for examples for other build tools are welcome!
 
 ### Gulp
@@ -164,4 +168,8 @@ Pull requests for examples for other build tools are welcome!
 
 ### Webpack
 
-TODO
+- Install dependencies by running `npm install` in your terminal
+- Run a single build with `npm run webpack`
+- Watch & automatically recompile when you change a Sass file with `npm run webpack:watch`
+
+[Read about using Webpack to build CSS](http://bensmithett.com/smarter-css-builds-with-webpack/).
