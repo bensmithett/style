@@ -1,6 +1,6 @@
 # Style
 
-An opinionated starting point for a scalable, maintainable CSS architecture.
+An opinionated starting point for scalable, maintainable CSS architecture.
 
 - [Sass](http://sass-lang.com/) ([node-sass](https://github.com/sass/node-sass) 3.3)
 - [Autoprefixer](https://github.com/postcss/autoprefixer)
