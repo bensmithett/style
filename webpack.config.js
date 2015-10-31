@@ -1,4 +1,3 @@
-var webpack = require('webpack')
 var autoprefixer = require('autoprefixer')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var path = require('path')
@@ -31,7 +30,7 @@ var config = {
   postcss: [
     autoprefixer({
       browsers: ['last 2 versions']
-    }) 
+    })
   ],
   resolve: {
     extensions: ['', '.js', '.sass', '.css'],

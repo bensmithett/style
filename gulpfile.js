@@ -14,7 +14,7 @@ gulp.task('style', function () {
     .pipe(
       sass({
         indentedSyntax: true,
-        includePaths: ["./stylesheets"]
+        includePaths: ['./stylesheets']
       }).on('error', sass.logError)
     )
 
@@ -29,7 +29,7 @@ gulp.task('style', function () {
     ]))
     .pipe(gulp.dest('./css'))
 })
- 
+
 gulp.task('style:watch', function () {
   gulp.watch(stylesheets, ['style'])
 })
