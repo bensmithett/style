@@ -34,17 +34,13 @@
   "devDependencies": {
     "autoprefixer": "^6.0.3",
     "metaquery": "^1.2.5",
-    "sanitize.css": "^2.1.1",
-
-
+    "sanitize.css": "^3.0.0",
     "webpack": "^1.12.2",
-    "css-loader": "^0.19.0",
+    "css-loader": "^0.21.0",
     "extract-text-webpack-plugin": "^0.8.2",
-    "postcss-loader": "^0.6.0",
+    "postcss-loader": "^0.7.0",
     "sass-loader": "^3.0.0",
-    "style-loader": "^0.12.4",
-    
-
+    "style-loader": "^0.13.0",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-postcss": "^6.0.1",
