@@ -9,7 +9,7 @@ An opinionated starting point for scalable, maintainable CSS architecture.
 - [SMACSS](http://smacss.com/)-style components written with [BEVM](http://webuild.envato.com/blog/chainable-bem-modifiers/) syntax
 - Example build pipelines for [Gulp](http://gulpjs.com/) & [Webpack](https://webpack.github.io/)
 
-Style is an approach to writing CSS [born](http://webuild.envato.com/blog/how-to-scale-and-maintain-legacy-css-with-sass-and-smacss/) & [refined](http://market.envato.com/) over several years at [Envato](http://www.envato.com/) by the team responsible for maintaining & evolving the 9 year old Rails codebase that powers [Envato Market](http://market.envato.com/).
+Style is an approach to writing CSS [born](http://webuild.envato.com/blog/how-to-scale-and-maintain-legacy-css-with-sass-and-smacss/) & [refined](http://webuild.envato.com/blog/chainable-bem-modifiers/) over several years at [Envato](http://www.envato.com/) by the team responsible for maintaining & evolving the 9 year old Rails codebase that powers [Envato Market](http://market.envato.com/).
 
 ## Should you use it?
 
@@ -17,6 +17,7 @@ If you're starting a new project today, especially a JavaScript-heavy project, I
 
 However Style's approach might be a better option in some cases:
 
+- Using the [Rails Asset Pipeline](http://guides.rubyonrails.org/asset_pipeline.html)
 - Views or templates authored in something other than JavaScript (e.g. PHP, [Twig](http://twig.sensiolabs.org/), [ERB](http://apidock.com/ruby/ERB), [Slim](http://slim-lang.com/), etc)
 - Maintaining an existing CSS or Sass codebase
 - Simple static site projects
@@ -25,7 +26,7 @@ However Style's approach might be a better option in some cases:
 
 Style is designed as a starting point to work with your own asset build process (eg an [asset pipeline](http://guides.rubyonrails.org/asset_pipeline.html), [Grunt](http://gruntjs.com/) or [Gulp](http://gulpjs.com/) task). Just drop the `stylesheets` folder into your app & start styling!
 
-Example build configurations are provided for Gulp & Webpack (see below for how to use them).
+Example build configurations are provided for Gulp & Webpack (see below for how to use them), as well as an example manifest CSS file for Rails projects.
 
 ## General principles
 
@@ -104,15 +105,15 @@ Read [Chainable BEM modifiers](http://webuild.envato.com/blog/chainable-bem-modi
 
 #### `grid` and `layout-box`
 
-The included `grid` and `layout-box` are a good state for most layout needs, but feel free to replace them!
+The included `grid` and `layout-box` are a good start for most layout needs, but feel free to replace them!
 
 ### `config`
 
-Config files define configuration variables (e.g. colors, font stacks, common sizes). They don't output any CSS of their own, but should be imported into Sass files that do using `@import`.
+Config files define configuration variables (e.g. colors, font stacks, common sizes). They don't output any CSS of their own, but should be imported into Sass files that need them using `@import`.
 
 ### `functions` and `mixins`
 
-Sass functions & mixins intended to be imported into other Sass files using `@import` & used to output some CSS.
+Sass functions & mixins intended to be imported into other Sass files using `@import`.
 
 ### `type`
 
@@ -121,7 +122,7 @@ I've found that typography styles are a bit special. They're not quite component
 - Styling a big block of raw HTML that has no classes (e.g. rendered from Markdown)
 - Applying your base typography styles to an element in a one-off situation (e.g. styling a heading that appears inside another component)
 
-Each Sass file in `type` defines some styles under a class (e.g. `.type-heading`) as well as applying those same styles to class-free elements that appear inside a `type-raw-html` block (e.g. `.type-raw-html h1`).
+Each Sass file in `type` defines some styles under a component class (e.g. `.type-heading`) as well as applying those same styles to class-free elements that appear inside a `type-raw-html` block (e.g. `.type-raw-html h1`).
 
 ### `utilities`
 
@@ -158,7 +159,7 @@ The `devDependencies` in `package.json` are grouped by build tool (no comments i
 
 The output CSS can be inspected in `css/app.css` or you can open `index.html` in a browser to see it in action.
 
-Pull requests for examples for other build tools are welcome!
+Pull requests adding examples for other build tools are welcome!
 
 ### Gulp
 
