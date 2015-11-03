@@ -15,6 +15,30 @@ An opinionated starting point for scalable, maintainable CSS architecture.
 
 Style is an approach to writing CSS [born](http://webuild.envato.com/blog/how-to-scale-and-maintain-legacy-css-with-sass-and-smacss/) & [refined](http://webuild.envato.com/blog/chainable-bem-modifiers/) over several years at [Envato](http://www.envato.com/) by the team responsible for maintaining & evolving the 9 year old Rails codebase that powers [Envato Market](http://market.envato.com/).
 
+## Contents
+
+- [Should you use it?](#should-you-use-it)
+- [Getting started](#getting-started)
+- [General principles](#general-principles)
+    - [Every Sass file is compiled in isolation](#every-sass-file-is-compiled-in-isolation)
+    - [The component paradigm](#the-component-paradigm)
+- [Style categories](#style-categories)
+  - [`base`](#base)
+  - [`components`](#components)
+    - [Simple component](#simple-component)
+    - [Complex component](#complex-component)
+    - [`grid` and `layout-box`](#grid-and-layout-box)
+  - [`config`](#config)
+  - [`functions` and `mixins`](#functions-and-mixins)
+  - [`type`](#type)
+  - [`utilities`](#utilities)
+- [Responsive design & Metaquery](#responsive-design--metaquery)
+- [Build examples](#build-examples)
+  - [Gulp](#gulp)
+  - [Webpack](#webpack)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Should you use it?
 
 If you're starting a new project today, especially a JavaScript-heavy project, I'd strongly recommend investigating [CSS Modules](http://glenmaddern.com/articles/css-modules).
