@@ -178,3 +178,13 @@ Pull requests adding examples for other build tools are welcome!
 - Watch & automatically recompile when you change a Sass file with `npm run webpack:watch`
 
 [Read about using Webpack to build CSS](http://bensmithett.com/smarter-css-builds-with-webpack/).
+
+## Contributing
+
+Please adhere to the existing code style. JavaScript that doesn't comply with [standard](http://standardjs.com/) will cause the build to fail.
+
+All issues, pull requests & code contributions must comply with the [Contributor Code of Conduct](./CODE_OF_CONDUCT.md)
+
+## License
+
+Style is released under the [MIT License](http://ben.mit-license.org/).
