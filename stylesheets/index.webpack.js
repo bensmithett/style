@@ -7,7 +7,7 @@
 // For more info read:
 // http://bensmithett.com/smarter-css-builds-with-webpack/
 
-require('sanitize.css/dist/sanitize.css')
+require('sanitize.css/lib/sanitize.css')
 
 require('base/font_faces')
 require('base/animations/flash')
