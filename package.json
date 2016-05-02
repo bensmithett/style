@@ -46,7 +46,7 @@
     "postcss-loader": "^0.9.1",
     "sanitize.css": "^3.3.0",
     "sass-loader": "^3.2.0",
-    "standard": "^6.0.8",
+    "standard": "^7.0.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.12.14"
   }
