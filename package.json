@@ -42,7 +42,7 @@
     "gulp-sass": "^2.0.4",
     "merge-stream": "^1.0.0",
     "metaquery": "^1.2.5",
-    "node-sass": "^3.3.3",
+    "node-sass": "^4.1.0",
     "postcss-loader": "^1.1.0",
     "sanitize.css": "^4.0.0",
     "sass-loader": "^4.0.1",
