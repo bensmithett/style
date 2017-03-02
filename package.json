@@ -45,7 +45,7 @@
     "node-sass": "^4.1.0",
     "postcss-loader": "^1.1.0",
     "sanitize.css": "^5.0.0",
-    "sass-loader": "^4.0.1",
+    "sass-loader": "^6.0.1",
     "standard": "^8.0.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.12.14"
