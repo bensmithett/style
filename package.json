@@ -34,7 +34,7 @@
   "homepage": "https://github.com/bensmithett/style",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
-    "css-loader": "^0.26.0",
+    "css-loader": "^0.28.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
