@@ -35,7 +35,7 @@
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "css-loader": "^0.26.0",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "^2.0.0",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-postcss": "^6.0.1",
