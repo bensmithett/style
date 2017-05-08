@@ -4,6 +4,8 @@
 
 # Style
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/bensmithett/style.svg)](https://greenkeeper.io/)
+
 An opinionated starting point for scalable, maintainable CSS architecture.
 
 - [Sass](http://sass-lang.com/) ([node-sass](https://github.com/sass/node-sass) 3.3)
