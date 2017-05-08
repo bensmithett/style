@@ -1,40 +1,68 @@
-var autoprefixer = require('autoprefixer')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var path = require('path')
+const autoprefixer = require('autoprefixer')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path')
 
-var cssLoaders = ['css-loader', 'postcss-loader']
-var sassLoaders = ['sass-loader?indentedSyntax=sass&includePaths[]=' + path.resolve(__dirname, './stylesheets')]
+// I've defined these loaders up here because we'll reuse the css
+// and postcss configurations for both .css and .sass files, but you
+// don't need to.
+const loaders = {
+  css: {
+    loader: 'css-loader'
+  },
+  postcss: {
+    loader: 'postcss-loader',
+    options: {
+      plugins: (loader) => [
+        autoprefixer({
+          browsers: ['last 2 versions']
+        })
+      ]
+    }
+  },
+  sass: {
+    loader: 'sass-loader',
+    options: {
+      indentedSyntax: true,
+      includePaths: [path.resolve(__dirname, './stylesheets')]
+    }
+  }
+}
 
-var config = {
+const config = {
   entry: {
     app: ['./stylesheets/index.webpack']
   },
+
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', cssLoaders.join('!'))
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [loaders.css, loaders.postcss]
+        })
       },
       {
         test: /\.sass$/,
-        loader: ExtractTextPlugin.extract('style-loader', cssLoaders.concat(sassLoaders).join('!'))
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [loaders.css, loaders.postcss, loaders.sass]
+        })
       }
     ]
   },
+
   output: {
     filename: '[name].js',
     path: path.join(__dirname, './css'),
     publicPath: '/css'
   },
+
   plugins: [new ExtractTextPlugin('[name].css')],
-  postcss: [
-    autoprefixer({
-      browsers: ['last 2 versions']
-    })
-  ],
+
   resolve: {
-    extensions: ['', '.js', '.sass', '.css'],
-    modulesDirectories: ['stylesheets', 'node_modules']
+    extensions: ['.js', '.sass', '.css'],
+    modules: ['stylesheets', 'node_modules']
   }
 }
 
