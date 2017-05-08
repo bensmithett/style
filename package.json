@@ -1,6 +1,6 @@
 {
   "name": "style",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "An opinionated starting point for scalable, maintainable CSS architecture.",
   "main": "index.html",
   "scripts": {
