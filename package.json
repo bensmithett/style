@@ -43,7 +43,7 @@
     "sanitize.css": "^5.0.0",
     "sass-loader": "^6.0.3",
     "standard": "^10.0.0",
-    "style-loader": "^0.17.0",
+    "style-loader": "^0.18.0",
     "webpack": "^2.5.1"
   }
 }
