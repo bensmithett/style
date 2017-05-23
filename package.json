@@ -29,8 +29,8 @@
   },
   "homepage": "https://github.com/bensmithett/style",
   "devDependencies": {
-    "autoprefixer": "^7.0.1",
-    "css-loader": "^0.28.1",
+    "autoprefixer": "^7.1.1",
+    "css-loader": "^0.28.2",
     "extract-text-webpack-plugin": "^2.1.0",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
@@ -38,12 +38,12 @@
     "gulp-sass": "^3.1.0",
     "merge-stream": "^1.0.0",
     "metaquery": "^1.2.5",
-    "node-sass": "4.5.2",
-    "postcss-loader": "^2.0.1",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.5",
     "sanitize.css": "^5.0.0",
-    "sass-loader": "^6.0.3",
+    "sass-loader": "^6.0.5",
     "standard": "^10.0.0",
-    "style-loader": "^0.17.0",
-    "webpack": "^2.5.1"
+    "style-loader": "^0.18.1",
+    "webpack": "^2.6.0"
   }
 }

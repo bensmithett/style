@@ -18,7 +18,7 @@ gulp.task('style', function () {
       }).on('error', sass.logError)
     )
 
-  var cssStream = gulp.src('node_modules/sanitize.css/lib/sanitize.css')
+  var cssStream = gulp.src('node_modules/sanitize.css/sanitize.css')
 
   return merge(cssStream, sassStream)
     .pipe(concat('app.css'))
