@@ -1,5 +1,5 @@
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
-[![dependency Status](https://david-dm.org/bensmithett/style/status.svg)](https://david-dm.org/bensmithett/style#info=devDependencies)
+[![dependency Status](https://david-dm.org/bensmithett/style/status.svg)](https://david-dm.org/bensmithett/style#info=dependencies)
 [![Greenkeeper badge](https://badges.greenkeeper.io/bensmithett/style.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/bensmithett/style.svg)](https://travis-ci.org/bensmithett/style)
 
