@@ -40,7 +40,7 @@
     "metaquery": "^1.2.5",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.5",
-    "sanitize.css": "^5.0.0",
+    "sanitize.css": "^6.0.0",
     "sass-loader": "^6.0.5",
     "standard": "^11.0.0",
     "style-loader": "^0.20.0",
