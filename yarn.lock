@@ -4630,9 +4630,9 @@ safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@~5.1.0, 
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
 
-sanitize.css@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/sanitize.css/-/sanitize.css-5.0.0.tgz#84184b40678f72bb8898c768a27be7578257271a"
+sanitize.css@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/sanitize.css/-/sanitize.css-6.0.0.tgz#360132a0f209c71756d5fae2978874202c8e29ac"
 
 sass-graph@^2.2.4:
   version "2.2.4"
