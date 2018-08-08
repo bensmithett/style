@@ -39,7 +39,7 @@
     "merge-stream": "^1.0.0",
     "metaquery": "^1.2.5",
     "node-sass": "^4.5.3",
-    "postcss-loader": "^2.0.5",
+    "postcss-loader": "^3.0.0",
     "sanitize.css": "^5.0.0",
     "sass-loader": "^6.0.5",
     "standard": "^11.0.0",
